@@ -201,9 +201,10 @@
         <p class="mt-2">Sorteos entre amigos basados en la Lotería Nacional. Arriesga poco y gana mucho.</p>
     </footer>
 
-    <!-- SCRIPT DE INTERACTIVIDAD -->
+    <!-- SCRIPT DE INTERACTIVIDAD CONECTADO A SHEETDB -->
     <script>
-        let boletosEstado = JSON.parse(localStorage.getItem('dinoscents_boletos')) || Array(100).fill(0);
+        const SHEETDB_URL = 'https://sheetdb.io/api/v1/avy41sybj5eri';
+        let boletosData = []; // Almacenará la info traída de Google Sheets
         let seleccionTemporarios = [];
 
         function toggleBoletos() {
@@ -211,33 +212,51 @@
             seccion.classList.toggle('hidden');
             if(!seccion.classList.contains('hidden')) {
                 seccion.scrollIntoView({ behavior: 'smooth' });
-                renderizarBoletos();
+                cargarBoletosDesdeNube();
             }
+        }
+
+        // Cargar datos en tiempo real desde Google Sheets vía SheetDB
+        function cargarBoletosDesdeNube() {
+            fetch(SHEETDB_URL)
+                .then(response => response.json())
+                .then(data => {
+                    boletosData = data;
+                    renderizarBoletos();
+                })
+                .catch(error => {
+                    console.error("Error al cargar los boletos:", error);
+                    alert("No se pudieron cargar los boletos en tiempo real. Revisa tu conexión.");
+                });
         }
 
         function renderizarBoletos() {
             const grid = document.getElementById('grid-boletos');
             grid.innerHTML = '';
 
-            for (let i = 0; i < 100; i++) {
-                let numStr = i < 10 ? '0' + i : '' + i;
-                let estado = boletosEstado[i];
+            // Si por alguna razón la API no ha respondido, creamos 100 por defecto
+            let totalBoletos = boletosData.length > 0 ? boletosData.length : 100;
+
+            for (let i = 0; i < totalBoletos; i++) {
+                let boletoInfo = boletosData[i] || { Numero: (i < 10 ? '0' + i : '' + i), Estado: 'Libre', Nombre: '' };
+                let numStr = boletoInfo.Numero;
+                let estadoStr = boletoInfo.Estado ? boletoInfo.Estado.toLowerCase() : 'libre';
                 
                 let btn = document.createElement('button');
                 btn.innerText = numStr;
                 btn.className = "py-2.5 rounded-lg text-sm font-black transition transform active:scale-95 shadow-sm";
 
-                if (estado === 0) {
+                if (estadoStr === 'libre') {
                     if (seleccionTemporarios.includes(numStr)) {
                         btn.className += " bg-zinc-400 text-zinc-950 ring-2 ring-white shadow-md";
                     } else {
                         btn.className += " bg-zinc-600 text-zinc-100 hover:bg-zinc-500 shadow-sm";
                     }
                     btn.onclick = () => seleccionarBoleto(numStr);
-                } else if (estado === 1) {
+                } else if (estadoStr === 'apartado' || estadoStr === '1') {
                     btn.className += " bg-amber-500 text-zinc-950 opacity-95 cursor-not-allowed shadow-md";
                     btn.title = "Boleto Apartado";
-                } else if (estado === 2) {
+                } else if (estadoStr === 'pagado' || estadoStr === '2') {
                     btn.className += " bg-blue-600 text-white cursor-not-allowed opacity-95 shadow-md";
                     btn.title = "Boleto Pagado";
                 }
@@ -286,10 +305,10 @@
             }
         }
 
-        // Actualizar mensaje de WhatsApp al escribir nombre o teléfono
         document.getElementById('cliente-nombre').addEventListener('input', actualizarBarraCarrito);
         document.getElementById('cliente-telefono').addEventListener('input', actualizarBarraCarrito);
 
+        // Al dar clic en apartar por WhatsApp, actualiza automáticamente la nube a "Apartado"
         function guardarSeleccionComoApartados() {
             let nombre = document.getElementById('cliente-nombre').value.trim();
             let telefono = document.getElementById('cliente-telefono').value.trim();
@@ -300,14 +319,25 @@
                 return;
             }
 
-            seleccionTemporarios.forEach(num => {
-                let idx = parseInt(num);
-                if (boletosEstado[idx] === 0) {
-                    boletosEstado[idx] = 1;
-                }
+            let promesas = seleccionTemporarios.map(num => {
+                return fetch(`${SHEETDB_URL}/Numero/${num}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        data: { "Estado": "Apartado", "Nombre": `${nombre} (${telefono})` }
+                    })
+                });
             });
-            localStorage.setItem('dinoscents_boletos', JSON.stringify(boletosEstado));
-            seleccionTemporarios = [];
+
+            Promise.all(promesas).then(() => {
+                seleccionTemporarios = [];
+                cargarBoletosDesdeNube();
+            }).catch(err => {
+                console.error("Error al actualizar boletos:", err);
+            });
         }
 
         function verificarAdmin() {
@@ -327,18 +357,24 @@
                 return;
             }
             let numeros = inputVal.split(',').map(n => n.trim());
-            let count = 0;
-            numeros.forEach(numStr => {
-                let idx = parseInt(numStr);
-                if (!isNaN(idx) && idx >= 0 && idx <= 99) {
-                    boletosEstado[idx] = 2;
-                    count++;
-                }
+            let promesas = numeros.map(numStr => {
+                return fetch(`${SHEETDB_URL}/Numero/${numStr}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        data: { "Estado": "Pagado" }
+                    })
+                });
             });
-            localStorage.setItem('dinoscents_boletos', JSON.stringify(boletosEstado));
-            renderizarBoletos();
-            alert(`¡Se han marcado ${count} boleto(s) como PAGADO(S) exitosamente!`);
-            document.getElementById('admin-nums-pago').value = '';
+
+            Promise.all(promesas).then(() => {
+                alert(`¡Se han marcado los boletos como PAGADO(S) exitosamente!`);
+                document.getElementById('admin-nums-pago').value = '';
+                cargarBoletosDesdeNube();
+            });
         }
 
         function liberarBoletoAdmin() {
@@ -348,18 +384,24 @@
                 return;
             }
             let numeros = inputVal.split(',').map(n => n.trim());
-            let count = 0;
-            numeros.forEach(numStr => {
-                let idx = parseInt(numStr);
-                if (!isNaN(idx) && idx >= 0 && idx <= 99) {
-                    boletosEstado[idx] = 0;
-                    count++;
-                }
+            let promesas = numeros.map(numStr => {
+                return fetch(`${SHEETDB_URL}/Numero/${numStr}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        data: { "Estado": "Libre", "Nombre": "" }
+                    })
+                });
             });
-            localStorage.setItem('dinoscents_boletos', JSON.stringify(boletosEstado));
-            renderizarBoletos();
-            alert(`¡Se han liberado ${count} boleto(s) exitosamente!`);
-            document.getElementById('admin-nums-liberar').value = '';
+
+            Promise.all(promesas).then(() => {
+                alert(`¡Se han liberado los boletos exitosamente!`);
+                document.getElementById('admin-nums-liberar').value = '';
+                cargarBoletosDesdeNube();
+            });
         }
     </script>
 </body>
