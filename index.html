@@ -122,16 +122,23 @@
         </div>
     </div>
 
-    <!-- APARTADO DE FECHA DE RIFA Y FACEBOOK -->
+    <!-- APARTADO DE FECHA DE RIFA Y SOCIALES -->
     <div class="py-6 max-w-6xl mx-auto px-4">
         <div class="bg-[#101010] border border-zinc-700 p-6 rounded-3xl shadow-md text-center">
-            <p class="text-sm text-zinc-300 leading-relaxed mb-4">
-                📅 La fecha de la rifa será anunciada mediante nuestra página de Facebook al alcanzar el <strong>70% de boletos vendidos</strong>.
+            <p class="text-sm text-zinc-300 leading-relaxed mb-6">
+                📅 La fecha de la rifa será anunciada mediante nuestras redes al alcanzar el <strong>70% de boletos vendidos</strong>.
             </p>
-            <a href="https://www.facebook.com/share/18wbrosP44/?mibextid=wwXIfr" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-3 px-6 rounded-xl text-sm transition border border-zinc-600 shadow">
-                <i class="fab fa-facebook text-base"></i>
-                <span>Visita nuestra página de Facebook</span>
-            </a>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://www.facebook.com/share/18wbrosP44/?mibextid=wwXIfr" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-3 px-6 rounded-xl text-sm transition border border-zinc-600 shadow">
+                    <i class="fab fa-facebook text-base"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/dinoscents.slw?igsh=MWRvcWNycjhhdTZrcw%3D%3D&utm_source=qr" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-3 px-6 rounded-xl text-sm transition border border-zinc-600 shadow">
+                    <i class="fab fa-instagram text-base"></i>
+                    <span>Instagram</span>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -204,7 +211,7 @@
     <!-- SCRIPT DE INTERACTIVIDAD CONECTADO A SHEETDB -->
     <script>
         const SHEETDB_URL = 'https://sheetdb.io/api/v1/avy41sybj5eri';
-        let boletosData = []; // Almacenará la info traída de Google Sheets
+        let boletosData = [];
         let seleccionTemporarios = [];
 
         function toggleBoletos() {
@@ -216,7 +223,6 @@
             }
         }
 
-        // Cargar datos en tiempo real desde Google Sheets vía SheetDB
         function cargarBoletosDesdeNube() {
             fetch(SHEETDB_URL)
                 .then(response => response.json())
@@ -233,10 +239,7 @@
         function renderizarBoletos() {
             const grid = document.getElementById('grid-boletos');
             grid.innerHTML = '';
-
-            // Si por alguna razón la API no ha respondido, creamos 100 por defecto
             let totalBoletos = boletosData.length > 0 ? boletosData.length : 100;
-
             for (let i = 0; i < totalBoletos; i++) {
                 let boletoInfo = boletosData[i] || { Numero: (i < 10 ? '0' + i : '' + i), Estado: 'Libre', Nombre: '' };
                 let numStr = boletoInfo.Numero;
@@ -255,12 +258,9 @@
                     btn.onclick = () => seleccionarBoleto(numStr);
                 } else if (estadoStr === 'apartado' || estadoStr === '1') {
                     btn.className += " bg-amber-500 text-zinc-950 opacity-95 cursor-not-allowed shadow-md";
-                    btn.title = "Boleto Apartado";
                 } else if (estadoStr === 'pagado' || estadoStr === '2') {
                     btn.className += " bg-blue-600 text-white cursor-not-allowed opacity-95 shadow-md";
-                    btn.title = "Boleto Pagado";
                 }
-
                 grid.appendChild(btn);
             }
             actualizarBarraCarrito();
@@ -286,18 +286,14 @@
             const txtCantidad = document.getElementById('txt-cantidad');
             const txtTotal = document.getElementById('txt-total');
             const btnWhatsapp = document.getElementById('btn-whatsapp-mult');
-
             let cantidad = seleccionTemporarios.length;
-
             if (cantidad > 0) {
                 barra.classList.remove('hidden');
                 txtCantidad.innerText = cantidad;
                 txtTotal.innerText = `$${cantidad * 35} MXN`;
-
                 let nombre = document.getElementById('cliente-nombre').value.trim();
                 let telefono = document.getElementById('cliente-telefono').value.trim();
                 let numerosOrdenados = [...seleccionTemporarios].sort().join(', ');
-
                 let mensaje = encodeURIComponent(`Hola, Dinoscents 👋. Quiero apartar los siguientes boletos para la rifa de perfumes:\n\n👤 Nombre: *${nombre || 'No especificado'}*\n📱 Teléfono: *${telefono || 'No especificado'}*\n🔢 Números: *${numerosOrdenados}*\n💰 Total a pagar: *$${cantidad * 35} MXN*\n\n⚠️ (Recuerda que tengo 24 horas para realizar mi pago y enviar comprobante).`);
                 btnWhatsapp.href = `https://wa.me/522205521660?text=${mensaje}`;
             } else {
@@ -308,35 +304,24 @@
         document.getElementById('cliente-nombre').addEventListener('input', actualizarBarraCarrito);
         document.getElementById('cliente-telefono').addEventListener('input', actualizarBarraCarrito);
 
-        // Al dar clic en apartar por WhatsApp, actualiza automáticamente la nube a "Apartado"
         function guardarSeleccionComoApartados() {
             let nombre = document.getElementById('cliente-nombre').value.trim();
             let telefono = document.getElementById('cliente-telefono').value.trim();
-
             if(!nombre || !telefono) {
                 alert("Por favor ingresa tu nombre completo y teléfono antes de apartar.");
                 event.preventDefault();
                 return;
             }
-
             let promesas = seleccionTemporarios.map(num => {
                 return fetch(`${SHEETDB_URL}/Numero/${num}`, {
                     method: 'PATCH',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        data: { "Estado": "Apartado", "Nombre": `${nombre} (${telefono})` }
-                    })
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ data: { "Estado": "Apartado", "Nombre": `${nombre} (${telefono})` } })
                 });
             });
-
             Promise.all(promesas).then(() => {
                 seleccionTemporarios = [];
                 cargarBoletosDesdeNube();
-            }).catch(err => {
-                console.error("Error al actualizar boletos:", err);
             });
         }
 
@@ -352,26 +337,17 @@
 
         function marcarPagadoAdmin() {
             let inputVal = document.getElementById('admin-nums-pago').value.trim();
-            if (!inputVal) {
-                alert("Ingresa al menos un número de boleto.");
-                return;
-            }
+            if (!inputVal) return;
             let numeros = inputVal.split(',').map(n => n.trim());
             let promesas = numeros.map(numStr => {
                 return fetch(`${SHEETDB_URL}/Numero/${numStr}`, {
                     method: 'PATCH',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        data: { "Estado": "Pagado" }
-                    })
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ data: { "Estado": "Pagado" } })
                 });
             });
-
             Promise.all(promesas).then(() => {
-                alert(`¡Se han marcado los boletos como PAGADO(S) exitosamente!`);
+                alert("Boletos marcados como PAGADO(S)");
                 document.getElementById('admin-nums-pago').value = '';
                 cargarBoletosDesdeNube();
             });
@@ -379,26 +355,17 @@
 
         function liberarBoletoAdmin() {
             let inputVal = document.getElementById('admin-nums-liberar').value.trim();
-            if (!inputVal) {
-                alert("Ingresa al menos un número de boleto.");
-                return;
-            }
+            if (!inputVal) return;
             let numeros = inputVal.split(',').map(n => n.trim());
             let promesas = numeros.map(numStr => {
                 return fetch(`${SHEETDB_URL}/Numero/${numStr}`, {
                     method: 'PATCH',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        data: { "Estado": "Libre", "Nombre": "" }
-                    })
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ data: { "Estado": "Libre", "Nombre": "" } })
                 });
             });
-
             Promise.all(promesas).then(() => {
-                alert(`¡Se han liberado los boletos exitosamente!`);
+                alert("Boletos liberados exitosamente");
                 document.getElementById('admin-nums-liberar').value = '';
                 cargarBoletosDesdeNube();
             });
