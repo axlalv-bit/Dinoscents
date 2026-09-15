@@ -7,21 +7,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .gold-gradient {
-            background: linear-gradient(135deg, #f39c12 0%, #d4af37 50%, #aa7c11 100%);
+        .silver-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%);
         }
-        .gold-text {
-            color: #d4af37;
+        .silver-text {
+            color: #e2e8f0;
         }
-        .gold-border {
-            border-color: rgba(212, 175, 55, 0.3);
+        .silver-border {
+            border-color: rgba(226, 232, 240, 0.2);
         }
     </style>
 </head>
-<body class="bg-[#0a0a0a] text-zinc-100 font-sans pb-24">
+<body class="bg-[#09090b] text-zinc-100 font-sans pb-24">
 
     <!-- HEADER / NAVEGACIÓN -->
-    <header class="bg-[#121212] border-b border-zinc-800 sticky top-0 z-50 shadow-md">
+    <header class="bg-[#121215] border-b border-zinc-800 sticky top-0 z-50 shadow-md">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <div class="bg-white text-zinc-950 font-bold px-3 py-2 rounded-xl text-xl shadow-lg">🦖</div>
@@ -31,32 +31,32 @@
                 </div>
             </div>
             <nav class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="#sorteo" class="text-zinc-300 hover:text-amber-400 transition">Sorteo Activo</a>
-                <a href="#boletos-section" class="text-zinc-300 hover:text-amber-400 transition">Boletos</a>
-                <a href="#verificador-section" class="text-amber-400 hover:text-amber-300 font-bold transition"><i class="fas fa-search mr-1"></i> Consultar Boleto</a>
-                <a href="#como-participar" class="text-zinc-300 hover:text-amber-400 transition">¿Quiénes somos?</a>
+                <a href="#sorteo" class="text-zinc-300 hover:text-white transition">Sorteo Activo</a>
+                <a href="#boletos-section" class="text-zinc-300 hover:text-white transition">Boletos</a>
+                <a href="#verificador-section" class="text-white hover:text-zinc-300 font-bold transition"><i class="fas fa-search mr-1"></i> Consultar Boleto</a>
+                <a href="#como-participar" class="text-zinc-300 hover:text-white transition">¿Quiénes somos?</a>
             </nav>
         </div>
     </header>
 
     <!-- SECCIÓN: SORTEO PRINCIPAL -->
     <section id="sorteo" class="py-12 px-4 max-w-6xl mx-auto">
-        <div class="bg-[#161616] border border-zinc-800 rounded-3xl p-6 md:p-10 shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="bg-[#121215] border border-zinc-800 rounded-3xl p-6 md:p-10 shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             
             <!-- TARJETA VISUAL DEL PREMIO -->
-            <div class="relative group flex flex-col justify-center items-center bg-gradient-to-br from-amber-950/30 via-[#0d0d0d] to-[#0d0d0d] p-8 rounded-2xl border gold-border shadow-inner min-h-[320px] text-center">
-                <span class="absolute top-4 left-4 gold-gradient text-zinc-950 font-black text-xs uppercase px-3 py-1 rounded-full shadow-md z-10">
+            <div class="relative group flex flex-col justify-center items-center bg-gradient-to-br from-zinc-900 via-[#0d0d0f] to-[#0d0d0f] p-8 rounded-2xl border silver-border shadow-inner min-h-[320px] text-center">
+                <span class="absolute top-4 left-4 silver-gradient text-zinc-950 font-black text-xs uppercase px-3 py-1 rounded-full shadow-md z-10">
                     <i class="fas fa-star mr-1"></i> Evento #2
                 </span>
                 
-                <div class="w-20 h-20 bg-amber-500/10 border gold-border gold-text rounded-full flex items-center justify-center text-4xl mb-4 shadow-lg">
+                <div class="w-20 h-20 bg-zinc-800 border silver-border text-white rounded-full flex items-center justify-center text-4xl mb-4 shadow-lg">
                     <i class="fas fa-coins"></i>
                 </div>
-                <span class="text-xs font-bold gold-text uppercase tracking-widest">Premio Principal</span>
+                <span class="text-xs font-bold text-zinc-400 uppercase tracking-widest">Premio Principal</span>
                 <h3 class="text-4xl md:text-5xl font-black text-white tracking-tight my-1">$2,000 <span class="text-lg text-zinc-400">MXN</span></h3>
                 <p class="text-xs text-zinc-400 font-medium">Transferencia Inmediata / Efectivo</p>
                 
-                <div class="mt-4 bg-amber-500/10 border gold-border px-4 py-2 rounded-xl text-xs gold-text font-semibold">
+                <div class="mt-4 bg-zinc-800/60 border silver-border px-4 py-2 rounded-xl text-xs text-zinc-200 font-semibold">
                     🎁 ¡+$500 MXN de Bono acumulado al comprar 2 boletos o más!
                 </div>
             </div>
@@ -64,7 +64,7 @@
             <!-- DETALLES DE LA OFERTA -->
             <div class="text-center md:text-left">
                 <div class="flex justify-center md:justify-start">
-                    <span class="gold-text font-bold text-xs tracking-widest uppercase bg-amber-950/60 px-3 py-1 rounded-lg inline-block mb-3 border gold-border">
+                    <span class="text-zinc-200 font-bold text-xs tracking-widest uppercase bg-zinc-800 px-3 py-1 rounded-lg inline-block mb-3 border silver-border">
                         #2 EDICIÓN
                     </span>
                 </div>
@@ -76,9 +76,9 @@
                 </p>
 
                 <!-- BONO ESPECIAL OPORTUNIDAD -->
-                <div class="bg-gradient-to-r from-amber-950/30 to-zinc-900 border gold-border p-4 rounded-xl mb-6 shadow-md text-left">
-                    <p class="font-bold text-sm gold-text mb-1 flex items-center">
-                        <i class="fas fa-gift mr-2"></i> Bono Especial de Oportunidad:
+                <div class="bg-zinc-900/80 border silver-border p-4 rounded-xl mb-6 shadow-md text-left">
+                    <p class="font-bold text-sm text-white mb-1 flex items-center">
+                        <i class="fas fa-gift mr-2 text-zinc-300"></i> Bono Especial de Oportunidad:
                     </p>
                     <p class="text-xs text-zinc-300 leading-relaxed">
                         En la compra de <strong>2 boletos o más</strong>, si resultas ganador te llevas adicionalmente <strong>$500 MXN extra</strong> ($2,500 MXN en total).
@@ -86,18 +86,18 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-4 mb-6">
-                    <div class="bg-[#101010] p-4 rounded-xl border border-zinc-800 shadow-sm text-center md:text-left">
+                    <div class="bg-[#09090b] p-4 rounded-xl border border-zinc-800 shadow-sm text-center md:text-left">
                         <span class="text-xs text-zinc-400 block font-medium">Costo por boleto</span>
-                        <span class="text-2xl font-black gold-text">$45 MXN</span>
+                        <span class="text-2xl font-black text-white">$45 MXN</span>
                     </div>
-                    <div class="bg-[#101010] p-4 rounded-xl border border-zinc-800 shadow-sm text-center md:text-left">
+                    <div class="bg-[#09090b] p-4 rounded-xl border border-zinc-800 shadow-sm text-center md:text-left">
                         <span class="text-xs text-zinc-400 block font-medium">Disponibilidad</span>
                         <span class="text-lg font-bold text-zinc-100">Del 00 al 99</span>
                     </div>
                 </div>
 
                 <div>
-                    <button onclick="toggleBoletos()" class="w-full gold-gradient hover:opacity-90 text-zinc-950 font-black py-4 px-6 rounded-xl text-center transition shadow-lg uppercase tracking-wider text-sm flex items-center justify-center">
+                    <button onclick="toggleBoletos()" class="w-full silver-gradient hover:opacity-90 text-zinc-950 font-black py-4 px-6 rounded-xl text-center transition shadow-lg uppercase tracking-wider text-sm flex items-center justify-center">
                         <i class="fas fa-ticket-alt mr-2"></i> Elegir Mis Boletos
                     </button>
                 </div>
@@ -107,50 +107,50 @@
 
     <!-- SECCIÓN DE BOLETOS INTERACTIVA (00 - 99) -->
     <section id="boletos-section" class="py-12 px-4 max-w-4xl mx-auto hidden">
-        <div class="bg-[#161616] border border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl">
+        <div class="bg-[#121215] border border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl">
             <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
                 <div>
                     <h3 class="text-2xl font-black text-white">Selecciona tus números</h3>
                     <p class="text-xs text-zinc-400 mt-1">Puedes elegir uno o varios boletos antes de apartar.</p>
                 </div>
                 <!-- Referencia de Colores -->
-                <div class="flex flex-wrap gap-3 text-xs bg-[#0d0d0d] p-3 rounded-xl border border-zinc-800">
+                <div class="flex flex-wrap gap-3 text-xs bg-[#09090b] p-3 rounded-xl border border-zinc-800">
                     <div class="flex items-center space-x-1.5"><span class="w-3 h-3 bg-zinc-600 rounded-full inline-block shadow"></span><span class="text-zinc-300">Disponible</span></div>
-                    <div class="flex items-center space-x-1.5"><span class="w-3 h-3 bg-amber-500 rounded-full inline-block shadow"></span><span class="text-zinc-300">Apartado</span></div>
+                    <div class="flex items-center space-x-1.5"><span class="w-3 h-3 bg-zinc-400 rounded-full inline-block shadow"></span><span class="text-zinc-300">Apartado</span></div>
                     <div class="flex items-center space-x-1.5"><span class="w-3 h-3 bg-blue-600 rounded-full inline-block shadow"></span><span class="text-zinc-300">Pagado</span></div>
                 </div>
             </div>
 
             <!-- CAMPOS DE DATOS DEL CLIENTE -->
-            <div class="bg-[#0d0d0d] p-4 rounded-2xl border border-zinc-800 mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-[#09090b] p-4 rounded-2xl border border-zinc-800 mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-xs text-zinc-300 font-medium mb-1">Nombre Completo:</label>
-                    <input type="text" id="cliente-nombre" placeholder="Tu nombre y apellido" class="w-full bg-[#161616] border border-zinc-700 text-white px-3 py-2.5 rounded-xl text-sm outline-none focus:border-amber-500">
+                    <input type="text" id="cliente-nombre" placeholder="Tu nombre y apellido" class="w-full bg-[#121215] border border-zinc-700 text-white px-3 py-2.5 rounded-xl text-sm outline-none focus:border-white">
                 </div>
                 <div>
                     <label class="block text-xs text-zinc-300 font-medium mb-1">Número de Teléfono (WhatsApp):</label>
-                    <input type="tel" id="cliente-telefono" placeholder="Ej. 8441234567" class="w-full bg-[#161616] border border-zinc-700 text-white px-3 py-2.5 rounded-xl text-sm outline-none focus:border-amber-500">
+                    <input type="tel" id="cliente-telefono" placeholder="Ej. 8441234567" class="w-full bg-[#121215] border border-zinc-700 text-white px-3 py-2.5 rounded-xl text-sm outline-none focus:border-white">
                 </div>
             </div>
 
             <!-- Cuadrícula de Boletos -->
-            <div id="grid-boletos" class="grid grid-cols-5 sm:grid-cols-10 gap-2.5 max-h-96 overflow-y-auto p-3 bg-[#0d0d0d] rounded-2xl border border-zinc-800 shadow-inner">
+            <div id="grid-boletos" class="grid grid-cols-5 sm:grid-cols-10 gap-2.5 max-h-96 overflow-y-auto p-3 bg-[#09090b] rounded-2xl border border-zinc-800 shadow-inner">
                 <!-- Se generan automáticamente -->
             </div>
         </div>
     </section>
 
     <!-- BARRA FLOTANTE DE COMPRA MÚLTIPLE -->
-    <div id="barra-carrito" class="fixed bottom-0 left-0 right-0 bg-[#121212]/95 border-t border-zinc-800 p-4 z-40 hidden backdrop-blur-md shadow-2xl transition-all">
+    <div id="barra-carrito" class="fixed bottom-0 left-0 right-0 bg-[#121215]/95 border-t border-zinc-800 p-4 z-40 hidden backdrop-blur-md shadow-2xl transition-all">
         <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="text-center sm:text-left">
                 <p class="text-xs text-zinc-400">Boletos seleccionados: <strong id="txt-cantidad" class="text-zinc-200 text-sm">0</strong></p>
-                <p class="text-sm font-bold text-white">Total a pagar: <strong id="txt-total" class="gold-text text-lg">$0 MXN</strong></p>
+                <p class="text-sm font-bold text-white">Total a pagar: <strong id="txt-total" class="text-white text-lg">$0 MXN</strong></p>
                 <p id="txt-bono-status" class="text-[11px] font-semibold mt-0.5 text-zinc-400"></p>
             </div>
             <div class="flex gap-3 w-full sm:w-auto">
-                <button onclick="limpiarSeleccion()" class="bg-[#0a0a0a] hover:bg-zinc-800 text-zinc-300 font-semibold px-4 py-3 rounded-xl text-xs transition border border-zinc-800">Limpiar</button>
-                <a id="btn-whatsapp-mult" href="#" target="_blank" onclick="guardarSeleccionComoApartados()" class="flex-1 sm:flex-none gold-gradient hover:opacity-90 text-zinc-950 font-black px-6 py-3 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition flex items-center justify-center space-x-2 shadow-lg">
+                <button onclick="limpiarSeleccion()" class="bg-[#09090b] hover:bg-zinc-800 text-zinc-300 font-semibold px-4 py-3 rounded-xl text-xs transition border border-zinc-800">Limpiar</button>
+                <a id="btn-whatsapp-mult" href="#" target="_blank" onclick="guardarSeleccionComoApartados()" class="flex-1 sm:flex-none silver-gradient hover:opacity-90 text-zinc-950 font-black px-6 py-3 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition flex items-center justify-center space-x-2 shadow-lg">
                     <i class="fab fa-whatsapp text-base"></i> <span>Apartar por WhatsApp</span>
                 </a>
             </div>
@@ -159,23 +159,23 @@
 
     <!-- SECCIÓN: VERIFICADOR DE BOLETOS / CONSULTA DIGITAL -->
     <section id="verificador-section" class="py-12 px-4 max-w-4xl mx-auto">
-        <div class="bg-[#161616] border border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl">
+        <div class="bg-[#121215] border border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl">
             <div class="text-center max-w-xl mx-auto mb-6">
-                <span class="gold-text font-bold text-xs tracking-widest uppercase bg-amber-950/40 px-3 py-1 rounded-lg border gold-border">Consulta tu Boleto</span>
+                <span class="text-zinc-200 font-bold text-xs tracking-widest uppercase bg-zinc-800 px-3 py-1 rounded-lg border silver-border">Consulta tu Boleto</span>
                 <h3 class="text-2xl font-black text-white mt-2">Verificador de Boletos Comprados</h3>
-                <p class="text-xs text-zinc-400 mt-1">Ingresa tu número de teléfono de WhatsApp (10 dígitos) o tu número de boleto para consultar el estado de tu pago y descargar tu comprobante digital.</p>
+                <p class="text-xs text-zinc-400 mt-1">Ingresa tu número de teléfono de WhatsApp (10 dígitos) o tu número de boleto (ej. 05) para consultar únicamente tu comprobante digital.</p>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6">
-                <input type="text" id="busqueda-input" placeholder="Ej. 8441234567 o 05" class="bg-[#0d0d0d] border border-zinc-700 text-white px-4 py-3 rounded-xl text-sm flex-1 outline-none focus:border-amber-500">
-                <button onclick="buscarBoleto()" class="gold-gradient hover:opacity-90 text-zinc-950 font-black px-6 py-3 rounded-xl text-sm transition shadow-md flex items-center justify-center">
+                <input type="text" id="busqueda-input" placeholder="Ej. 8441234567 o 05" class="bg-[#09090b] border border-zinc-700 text-white px-4 py-3 rounded-xl text-sm flex-1 outline-none focus:border-white">
+                <button onclick="buscarBoleto()" class="silver-gradient hover:opacity-90 text-zinc-950 font-black px-6 py-3 rounded-xl text-sm transition shadow-md flex items-center justify-center">
                     <i class="fas fa-search mr-2"></i> Buscar
                 </button>
             </div>
 
             <!-- RESULTADO DEL COMPROBANTE -->
-            <div id="resultado-comprobante" class="hidden max-w-lg mx-auto bg-[#0d0d0d] border gold-border rounded-2xl p-6 relative overflow-hidden shadow-2xl">
-                <div class="absolute top-0 right-0 gold-gradient text-zinc-950 text-[10px] font-black px-4 py-1 rounded-bl-xl uppercase tracking-wider">
+            <div id="resultado-comprobante" class="hidden max-w-lg mx-auto bg-[#09090b] border silver-border rounded-2xl p-6 relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 right-0 silver-gradient text-zinc-950 text-[10px] font-black px-4 py-1 rounded-bl-xl uppercase tracking-wider">
                     Oficial Dinoscents
                 </div>
                 <div class="flex items-center space-x-3 mb-4">
@@ -189,8 +189,8 @@
                 <div class="border-t border-b border-zinc-800 py-3 my-3 space-y-2 text-xs">
                     <div class="flex justify-between"><span class="text-zinc-400">Titular:</span><strong id="comp-nombre" class="text-white font-bold">---</strong></div>
                     <div class="flex justify-between"><span class="text-zinc-400">Teléfono:</span><strong id="comp-telefono" class="text-white font-bold">---</strong></div>
-                    <div class="flex justify-between"><span class="text-zinc-400">Sorteo:</span><strong class="gold-text font-bold">Evento #2 ($2,000 MXN)</strong></div>
-                    <div class="flex justify-between"><span class="text-zinc-400">Boletos Asignados:</span><strong id="comp-numeros" class="text-amber-400 font-black text-sm">---</strong></div>
+                    <div class="flex justify-between"><span class="text-zinc-400">Sorteo:</span><strong class="text-zinc-200 font-bold">Evento #2 ($2,000 MXN)</strong></div>
+                    <div class="flex justify-between"><span class="text-zinc-400">Boletos Asignados:</span><strong id="comp-numeros" class="text-white font-black text-sm">---</strong></div>
                     <div class="flex justify-between"><span class="text-zinc-400">Monto Inscrito:</span><strong id="comp-monto" class="text-white font-bold">---</strong></div>
                     <div class="flex justify-between"><span class="text-zinc-400">Estado del Pago:</span><span id="comp-estado" class="font-black px-2 py-0.5 rounded text-[11px]">---</span></div>
                 </div>
@@ -204,7 +204,7 @@
 
     <!-- APARTADO DE FECHA DE RIFA Y SOCIALES -->
     <div class="py-6 max-w-6xl mx-auto px-4">
-        <div class="bg-[#101010] border border-zinc-800 p-6 rounded-3xl shadow-md text-center">
+        <div class="bg-[#121215] border border-zinc-800 p-6 rounded-3xl shadow-md text-center">
             <p class="text-sm text-zinc-300 leading-relaxed mb-6">
                 📅 La fecha oficial de la rifa se anunciará a través de nuestras redes sociales al alcanzar el <strong>80% de boletos vendidos</strong>.
             </p>
@@ -223,7 +223,7 @@
     </div>
 
     <!-- SECCIÓN: ¿QUIÉNES SOMOS? / ¿CÓMO FUNCIONA? -->
-    <section id="como-participar" class="py-16 bg-[#0d0d0d] border-t border-zinc-800">
+    <section id="como-participar" class="py-16 bg-[#09090b] border-t border-zinc-800">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <h2 class="text-2xl md:text-3xl font-black mb-4 text-white">¿Quiénes somos?</h2>
@@ -233,18 +233,18 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-[#161616] p-6 rounded-2xl border border-zinc-800 text-center shadow-lg">
-                    <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4 border gold-border shadow">1</div>
+                <div class="bg-[#121215] p-6 rounded-2xl border border-zinc-800 text-center shadow-lg">
+                    <div class="w-12 h-12 bg-zinc-800 text-white rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4 border silver-border shadow">1</div>
                     <h3 class="font-bold text-lg mb-2 text-white">Elige tus números</h3>
                     <p class="text-zinc-300 text-sm">Selecciona tus boletos de la lista (2 boletos o más activan bono extra).</p>
                 </div>
-                <div class="bg-[#161616] p-6 rounded-2xl border border-zinc-800 text-center shadow-lg">
-                    <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4 border gold-border shadow">2</div>
+                <div class="bg-[#121215] p-6 rounded-2xl border border-zinc-800 text-center shadow-lg">
+                    <div class="w-12 h-12 bg-zinc-800 text-white rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4 border silver-border shadow">2</div>
                     <h3 class="font-bold text-lg mb-2 text-white">Realiza tu pago</h3>
                     <p class="text-zinc-300 text-sm">Aparta por WhatsApp, realiza tu transferencia y envía el comprobante.</p>
                 </div>
-                <div class="bg-[#161616] p-6 rounded-2xl border border-zinc-800 text-center shadow-lg">
-                    <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4 border gold-border shadow">3</div>
+                <div class="bg-[#121215] p-6 rounded-2xl border border-zinc-800 text-center shadow-lg">
+                    <div class="w-12 h-12 bg-zinc-800 text-white rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4 border silver-border shadow">3</div>
                     <h3 class="font-bold text-lg mb-2 text-white">¡Listo para ganar!</h3>
                     <p class="text-zinc-300 text-sm">Tus boletos se confirmarán en el sistema y podrás consultar tu comprobante.</p>
                 </div>
@@ -255,26 +255,26 @@
     <!-- PANEL DE ADMINISTRACIÓN OCULTO -->
     <button onclick="document.getElementById('admin-container').classList.toggle('hidden')" class="fixed bottom-2 left-2 w-6 h-6 opacity-0 z-50 cursor-default" title="Admin"></button>
     
-    <div id="admin-container" class="hidden fixed bottom-10 left-10 py-8 bg-[#121212] border border-zinc-800 text-center px-4 z-50 rounded-2xl shadow-2xl max-w-sm w-full">
-        <div class="max-w-md mx-auto bg-[#161616] p-6 rounded-2xl border border-zinc-800 shadow-xl">
+    <div id="admin-container" class="hidden fixed bottom-10 left-10 py-8 bg-[#121215] border border-zinc-800 text-center px-4 z-50 rounded-2xl shadow-2xl max-w-sm w-full">
+        <div class="max-w-md mx-auto bg-[#121215] p-6 rounded-2xl border border-zinc-800 shadow-xl">
             <h4 class="text-sm font-bold text-zinc-300 uppercase tracking-widest mb-2"><i class="fas fa-lock text-xs mr-1"></i> Panel de Administrador</h4>
             <p class="text-xs text-zinc-400 mb-4">Ingresa tu contraseña para gestionar boletos.</p>
             <div id="admin-login" class="flex gap-2">
-                <input type="password" id="admin-pass" placeholder="Contraseña" class="bg-[#0a0a0a] border border-zinc-700 text-white px-3 py-2 rounded-xl text-sm flex-1 outline-none focus:border-white">
+                <input type="password" id="admin-pass" placeholder="Contraseña" class="bg-[#09090b] border border-zinc-700 text-white px-3 py-2 rounded-xl text-sm flex-1 outline-none focus:border-white">
                 <button onclick="verificarAdmin()" class="bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2 rounded-xl text-sm font-bold transition shadow">Entrar</button>
             </div>
             <div id="admin-controls" class="hidden mt-4 text-left space-y-3">
                 <div>
                     <label class="text-xs text-zinc-300 block mb-1">Marcar boletos como PAGADO (ej. 01, 05, 12):</label>
                     <div class="flex gap-2">
-                        <input type="text" id="admin-nums-pago" placeholder="Ej. 01, 05, 12" class="bg-[#0a0a0a] border border-zinc-700 text-white px-3 py-2 rounded-xl text-sm flex-1 outline-none">
+                        <input type="text" id="admin-nums-pago" placeholder="Ej. 01, 05, 12" class="bg-[#09090b] border border-zinc-700 text-white px-3 py-2 rounded-xl text-sm flex-1 outline-none">
                         <button onclick="marcarPagadoAdmin()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-black py-2 px-3 rounded-xl transition shadow">Pagado</button>
                     </div>
                 </div>
                 <div>
                     <label class="text-xs text-zinc-300 block mb-1">Liberar específicos (ej. 01, 05):</label>
                     <div class="flex gap-2">
-                        <input type="text" id="admin-nums-liberar" placeholder="Ej. 01, 05, 12" class="bg-[#0a0a0a] border border-zinc-700 text-white px-3 py-2 rounded-xl text-sm flex-1 outline-none">
+                        <input type="text" id="admin-nums-liberar" placeholder="Ej. 01, 05, 12" class="bg-[#09090b] border border-zinc-700 text-white px-3 py-2 rounded-xl text-sm flex-1 outline-none">
                         <button onclick="liberarBoletoAdmin()" class="bg-zinc-700 hover:bg-zinc-600 text-white text-xs font-black py-2 px-3 rounded-xl transition shadow">Liberar</button>
                     </div>
                 </div>
@@ -291,7 +291,7 @@
     </div>
 
     <!-- FOOTER -->
-    <footer class="bg-[#0a0a0a] border-t border-zinc-800 py-8 text-center text-xs text-zinc-400">
+    <footer class="bg-[#09090b] border-t border-zinc-800 py-8 text-center text-xs text-zinc-400">
         <p>© 2026 Dinoscents Saltillo. Todos los derechos reservados.</p>
         <p class="mt-2">Sorteos entre amigos basados en la Lotería Nacional (TRIS CLÁSICO). Arriesga poco y gana mucho.</p>
     </footer>
@@ -342,13 +342,13 @@
 
                 if (estadoStr === 'libre') {
                     if (seleccionTemporarios.includes(numStr)) {
-                        btn.className += " bg-amber-400 text-zinc-950 ring-2 ring-white shadow-md";
+                        btn.className += " bg-white text-zinc-950 ring-2 ring-zinc-400 shadow-md";
                     } else {
                         btn.className += " bg-zinc-600 text-zinc-100 hover:bg-zinc-500 shadow-sm";
                     }
                     btn.onclick = () => seleccionarBoleto(numStr);
                 } else if (estadoStr === 'apartado' || estadoStr === '1') {
-                    btn.className += " bg-amber-500 text-zinc-950 opacity-95 cursor-not-allowed shadow-md";
+                    btn.className += " bg-zinc-400 text-zinc-950 opacity-95 cursor-not-allowed shadow-md";
                 } else if (estadoStr === 'pagado' || estadoStr === '2') {
                     btn.className += " bg-blue-600 text-white cursor-not-allowed opacity-95 shadow-md";
                 }
@@ -388,10 +388,10 @@
                 
                 let aplicaBono = cantidad >= 2;
                 if(aplicaBono) {
-                    txtBonoStatus.className = "text-[11px] font-bold text-amber-400 mt-0.5";
+                    txtBonoStatus.className = "text-[11px] font-bold text-white mt-0.5";
                     txtBonoStatus.innerHTML = '<i class="fas fa-check-circle mr-1"></i> ¡Bono Activado! Participas por $2,500 MXN en total';
                 } else {
-                    txtBonoStatus.className = "text-[11px] font-medium text-amber-500/80 mt-0.5";
+                    txtBonoStatus.className = "text-[11px] font-medium text-zinc-400 mt-0.5";
                     txtBonoStatus.innerHTML = '💡 Agrega 1 boleto más para activar el Bono de $500 extras';
                 }
 
@@ -433,37 +433,56 @@
             });
         }
 
-        // VERIFICADOR DE BOLETOS COMPRADOS
+        // VERIFICADOR DE BOLETOS CORREGIDO (BÚSQUEDA EXACTA / ASOCIACIÓN CORRECTA)
         function buscarBoleto() {
             let busqueda = document.getElementById('busqueda-input').value.trim().toLowerCase();
             let contenedor = document.getElementById('resultado-comprobante');
             if(!busqueda) {
-                alert("Por favor ingresa un número de teléfono o número de boleto.");
+                alert("Por favor ingresa tu número de teléfono o tu número de boleto.");
                 return;
             }
+
+            // Normalizar número de boleto (ej. si ponen '5' convertir a '05')
+            let busquedaNumeroBoleto = busqueda.length === 1 ? '0' + busqueda : busqueda;
 
             fetch(SHEETDB_URL)
                 .then(res => res.json())
                 .then(data => {
-                    let encontrados = data.filter(b => {
-                        let num = b.Numero ? b.Numero.toString().toLowerCase() : '';
-                        let nombre = b.Nombre ? b.Nombre.toString().toLowerCase() : '';
-                        return num === busqueda || nombre.includes(busqueda);
+                    // 1. Identificar si la búsqueda coincide de forma exacta con un número de boleto ocupado
+                    let boletoDirecto = data.find(b => {
+                        let num = b.Numero ? b.Numero.toString().trim() : '';
+                        let estado = b.Estado ? b.Estado.toLowerCase() : '';
+                        return num === busquedaNumeroBoleto && (estado === 'apartado' || estado === 'pagado');
                     });
 
+                    let encontrados = [];
+
+                    if (boletoDirecto && boletoDirecto.Nombre) {
+                        // Si se buscó un boleto exacto, obtener TODOS los boletos de ese mismo dueño
+                        let duenoBoleto = boletoDirecto.Nombre.toString().trim();
+                        encontrados = data.filter(b => b.Nombre && b.Nombre.toString().trim() === duenoBoleto);
+                    } else {
+                        // Si se buscó por número de teléfono o nombre del cliente
+                        encontrados = data.filter(b => {
+                            let nombreYTel = b.Nombre ? b.Nombre.toString().toLowerCase() : '';
+                            let estado = b.Estado ? b.Estado.toLowerCase() : '';
+                            return (estado === 'apartado' || estado === 'pagado') && nombreYTel.includes(busqueda);
+                        });
+                    }
+
                     if(encontrados.length === 0) {
-                        alert("No se encontraron boletos registrados con esos datos.");
+                        alert("No se encontraron boletos registrados u ocupados con esos datos.");
                         contenedor.classList.add('hidden');
                         return;
                     }
 
                     let primer = encontrados[0];
-                    let numerosLista = encontrados.map(e => e.Numero).join(', ');
+                    let numerosLista = encontrados.map(e => e.Numero).sort().join(', ');
                     let totalInvertido = encontrados.length * PRECIO_BOLETO;
                     let estadoPago = primer.Estado || 'Apartado';
 
-                    document.getElementById('comp-nombre').innerText = primer.Nombre ? primer.Nombre.split('(')[0] : 'Cliente Dinoscents';
-                    document.getElementById('comp-telefono').innerText = primer.Nombre && primer.Nombre.includes('(') ? primer.Nombre.split('(')[1].replace(')', '') : 'Registrado';
+                    document.getElementById('comp-nombre').innerText = primer.Nombre ? primer.Nombre.split('(')[0].trim() : 'Cliente Dinoscents';
+                    document.getElementById('comp-telefono').innerText = primer.Nombre && primer.Nombre.includes('(') ? primer.Nombre.split('(')[1].replace(')', '').trim() : 'Registrado';
                     document.getElementById('comp-numeros').innerText = numerosLista;
                     document.getElementById('comp-monto').innerText = `$${totalInvertido} MXN`;
                     
@@ -473,11 +492,15 @@
                         elEstado.className = "bg-blue-600 text-white font-black px-2 py-0.5 rounded text-[11px]";
                     } else {
                         elEstado.innerText = 'APARTADO (PENDIENTE DE PAGO)';
-                        elEstado.className = "bg-amber-500 text-zinc-950 font-black px-2 py-0.5 rounded text-[11px]";
+                        elEstado.className = "bg-zinc-400 text-zinc-950 font-black px-2 py-0.5 rounded text-[11px]";
                     }
 
                     contenedor.classList.remove('hidden');
                     contenedor.scrollIntoView({ behavior: 'smooth' });
+                })
+                .catch(err => {
+                    console.error("Error al verificar boleto:", err);
+                    alert("Error al consultar la base de datos.");
                 });
         }
 
