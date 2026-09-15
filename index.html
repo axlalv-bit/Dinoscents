@@ -10,9 +10,6 @@
         .silver-gradient {
             background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%);
         }
-        .silver-text {
-            color: #e2e8f0;
-        }
         .silver-border {
             border-color: rgba(226, 232, 240, 0.2);
         }
@@ -116,7 +113,7 @@
                 <!-- Referencia de Colores -->
                 <div class="flex flex-wrap gap-3 text-xs bg-[#09090b] p-3 rounded-xl border border-zinc-800">
                     <div class="flex items-center space-x-1.5"><span class="w-3 h-3 bg-zinc-600 rounded-full inline-block shadow"></span><span class="text-zinc-300">Disponible</span></div>
-                    <div class="flex items-center space-x-1.5"><span class="w-3 h-3 bg-zinc-400 rounded-full inline-block shadow"></span><span class="text-zinc-300">Apartado</span></div>
+                    <div class="flex items-center space-x-1.5"><span class="w-3 h-3 bg-amber-500 rounded-full inline-block shadow"></span><span class="text-zinc-300">Apartado</span></div>
                     <div class="flex items-center space-x-1.5"><span class="w-3 h-3 bg-blue-600 rounded-full inline-block shadow"></span><span class="text-zinc-300">Pagado</span></div>
                 </div>
             </div>
@@ -163,11 +160,11 @@
             <div class="text-center max-w-xl mx-auto mb-6">
                 <span class="text-zinc-200 font-bold text-xs tracking-widest uppercase bg-zinc-800 px-3 py-1 rounded-lg border silver-border">Consulta tu Boleto</span>
                 <h3 class="text-2xl font-black text-white mt-2">Verificador de Boletos Comprados</h3>
-                <p class="text-xs text-zinc-400 mt-1">Ingresa tu número de teléfono de WhatsApp (10 dígitos) o tu número de boleto (ej. 05) para consultar únicamente tu comprobante digital.</p>
+                <p class="text-xs text-zinc-400 mt-1">Ingresa exactamente tu <strong>número de boleto (2 dígitos, ej. 02)</strong> o tu <strong>teléfono de WhatsApp (10 dígitos)</strong> para consultar tu comprobante.</p>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6">
-                <input type="text" id="busqueda-input" placeholder="Ej. 8441234567 o 05" class="bg-[#09090b] border border-zinc-700 text-white px-4 py-3 rounded-xl text-sm flex-1 outline-none focus:border-white">
+                <input type="text" id="busqueda-input" maxlength="10" placeholder="2 dígitos (ej. 02) o 10 dígitos (teléfono)" class="bg-[#09090b] border border-zinc-700 text-white px-4 py-3 rounded-xl text-sm flex-1 outline-none focus:border-white">
                 <button onclick="buscarBoleto()" class="silver-gradient hover:opacity-90 text-zinc-950 font-black px-6 py-3 rounded-xl text-sm transition shadow-md flex items-center justify-center">
                     <i class="fas fa-search mr-2"></i> Buscar
                 </button>
@@ -348,7 +345,8 @@
                     }
                     btn.onclick = () => seleccionarBoleto(numStr);
                 } else if (estadoStr === 'apartado' || estadoStr === '1') {
-                    btn.className += " bg-zinc-400 text-zinc-950 opacity-95 cursor-not-allowed shadow-md";
+                    // AMARILLO RESTAURADO PARA BOLETOS APARTADOS
+                    btn.className += " bg-amber-500 text-zinc-950 opacity-95 cursor-not-allowed shadow-md";
                 } else if (estadoStr === 'pagado' || estadoStr === '2') {
                     btn.className += " bg-blue-600 text-white cursor-not-allowed opacity-95 shadow-md";
                 }
@@ -433,36 +431,49 @@
             });
         }
 
-        // VERIFICADOR DE BOLETOS CORREGIDO (BÚSQUEDA EXACTA / ASOCIACIÓN CORRECTA)
+        // VERIFICADOR DE BOLETOS MEJORADO (2 CIFRAS BOLETO / 10 CIFRAS TELÉFONO)
         function buscarBoleto() {
             let busqueda = document.getElementById('busqueda-input').value.trim().toLowerCase();
             let contenedor = document.getElementById('resultado-comprobante');
-            if(!busqueda) {
-                alert("Por favor ingresa tu número de teléfono o tu número de boleto.");
+            
+            if (!busqueda) {
+                alert("Por favor ingresa tu número de boleto (2 dígitos) o tu teléfono de WhatsApp (10 dígitos).");
                 return;
             }
 
-            // Normalizar número de boleto (ej. si ponen '5' convertir a '05')
-            let busquedaNumeroBoleto = busqueda.length === 1 ? '0' + busqueda : busqueda;
+            // Normalización: si escriben un solo dígito (ej. 2), convertirlo automáticamente a "02"
+            if (busqueda.length === 1 && !isNaN(busqueda)) {
+                busqueda = '0' + busqueda;
+            }
+
+            let esBusquedaBoleto = busqueda.length === 2;
+            let esBusquedaTelefono = busqueda.length >= 10;
+
+            if (!esBusquedaBoleto && !esBusquedaTelefono) {
+                alert("Para consultar un boleto ingresa 2 dígitos (ej. 02). Para consultar por teléfono ingresa los 10 dígitos de tu WhatsApp.");
+                return;
+            }
 
             fetch(SHEETDB_URL)
                 .then(res => res.json())
                 .then(data => {
-                    // 1. Identificar si la búsqueda coincide de forma exacta con un número de boleto ocupado
-                    let boletoDirecto = data.find(b => {
-                        let num = b.Numero ? b.Numero.toString().trim() : '';
-                        let estado = b.Estado ? b.Estado.toLowerCase() : '';
-                        return num === busquedaNumeroBoleto && (estado === 'apartado' || estado === 'pagado');
-                    });
-
                     let encontrados = [];
 
-                    if (boletoDirecto && boletoDirecto.Nombre) {
-                        // Si se buscó un boleto exacto, obtener TODOS los boletos de ese mismo dueño
-                        let duenoBoleto = boletoDirecto.Nombre.toString().trim();
-                        encontrados = data.filter(b => b.Nombre && b.Nombre.toString().trim() === duenoBoleto);
-                    } else {
-                        // Si se buscó por número de teléfono o nombre del cliente
+                    if (esBusquedaBoleto) {
+                        // BÚSQUEDA POR NÚMERO DE BOLETO EXACTO (2 dígitos)
+                        let boletoEncontrado = data.find(b => {
+                            let num = b.Numero ? b.Numero.toString().trim() : '';
+                            let estado = b.Estado ? b.Estado.toLowerCase() : '';
+                            return num === busqueda && (estado === 'apartado' || estado === 'pagado');
+                        });
+
+                        if (boletoEncontrado && boletoEncontrado.Nombre) {
+                            // Obtener todos los boletos pertenecientes a la misma persona
+                            let duenoBoleto = boletoEncontrado.Nombre.toString().trim();
+                            encontrados = data.filter(b => b.Nombre && b.Nombre.toString().trim() === duenoBoleto);
+                        }
+                    } else if (esBusquedaTelefono) {
+                        // BÚSQUEDA POR TELÉFONO O NOMBRE (10 o más dígitos)
                         encontrados = data.filter(b => {
                             let nombreYTel = b.Nombre ? b.Nombre.toString().toLowerCase() : '';
                             let estado = b.Estado ? b.Estado.toLowerCase() : '';
@@ -470,8 +481,8 @@
                         });
                     }
 
-                    if(encontrados.length === 0) {
-                        alert("No se encontraron boletos registrados u ocupados con esos datos.");
+                    if (encontrados.length === 0) {
+                        alert("No se encontraron boletos registrados u ocupados con los datos proporcionados.");
                         contenedor.classList.add('hidden');
                         return;
                     }
@@ -487,12 +498,12 @@
                     document.getElementById('comp-monto').innerText = `$${totalInvertido} MXN`;
                     
                     let elEstado = document.getElementById('comp-estado');
-                    if(estadoPago.toLowerCase() === 'pagado') {
+                    if (estadoPago.toLowerCase() === 'pagado') {
                         elEstado.innerText = 'PAGADO ✓';
                         elEstado.className = "bg-blue-600 text-white font-black px-2 py-0.5 rounded text-[11px]";
                     } else {
                         elEstado.innerText = 'APARTADO (PENDIENTE DE PAGO)';
-                        elEstado.className = "bg-zinc-400 text-zinc-950 font-black px-2 py-0.5 rounded text-[11px]";
+                        elEstado.className = "bg-amber-500 text-zinc-950 font-black px-2 py-0.5 rounded text-[11px]";
                     }
 
                     contenedor.classList.remove('hidden');
