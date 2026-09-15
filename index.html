@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinoscents Saltillo | Sorteo de Perfumes</title>
+    <title>Dinoscents Saltillo | Rifa de Dinero en Efectivo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -13,10 +13,10 @@
     <header class="bg-[#121212] border-b border-zinc-800 sticky top-0 z-50 shadow-md">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div class="bg-white text-zinc-950 font-bold px-3 py-2 rounded-xl text-xl shadow-lg">🦖</div>
+                <div class="bg-emerald-500 text-zinc-950 font-bold px-3 py-2 rounded-xl text-xl shadow-lg">💵</div>
                 <div>
                     <h1 class="text-xl font-black tracking-wider text-white">DINOSCENTS</h1>
-                    <p class="text-xs text-zinc-400 uppercase tracking-widest font-semibold">Saltillo</p>
+                    <p class="text-[10px] text-emerald-400 uppercase tracking-widest font-bold">El aroma del éxito · Saltillo</p>
                 </div>
             </div>
             <nav class="hidden md:flex space-x-6 text-sm font-medium">
@@ -30,40 +30,63 @@
     <!-- SECCIÓN: SORTEO PRINCIPAL -->
     <section id="sorteo" class="py-12 px-4 max-w-6xl mx-auto">
         <div class="bg-[#161616] border border-zinc-800 rounded-3xl p-6 md:p-10 shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div class="relative group flex justify-center bg-[#0d0d0d] p-6 rounded-2xl border border-zinc-800/60 shadow-inner">
-                <span class="absolute top-4 left-4 bg-white text-zinc-950 font-black text-xs uppercase px-3 py-1 rounded-full shadow-md z-10">¡Sorteo Activo!</span>
-                <img src="https://i.imgur.com/R5jvIfq_d.webp?maxwidth=760&fidelity=grand" alt="Perfume en Rifa Versace Eros y Dinoscents" class="rounded-xl max-h-80 object-cover shadow-lg border border-zinc-800">
+            
+            <!-- TARJETA VISUAL DEL PREMIO -->
+            <div class="relative group flex flex-col justify-center items-center bg-gradient-to-br from-emerald-950/40 via-[#0d0d0d] to-[#0d0d0d] p-8 rounded-2xl border border-emerald-500/30 shadow-inner min-h-[320px] text-center">
+                <span class="absolute top-4 left-4 bg-emerald-500 text-zinc-950 font-black text-xs uppercase px-3 py-1 rounded-full shadow-md z-10">
+                    <i class="fas fa-bolt mr-1"></i> Rifa Relámpago
+                </span>
+                
+                <div class="w-20 h-20 bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 rounded-full flex items-center justify-center text-4xl mb-4 shadow-lg">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Premio Principal</span>
+                <h3 class="text-4xl md:text-5xl font-black text-white tracking-tight my-1">$2,000 <span class="text-lg text-zinc-400">MXN</span></h3>
+                <p class="text-xs text-zinc-400 font-medium">Transferencia inmediata / Efectivo</p>
+                
+                <div class="mt-4 bg-emerald-500/10 border border-emerald-500/30 px-4 py-2 rounded-xl text-xs text-emerald-300 font-semibold">
+                    🎁 ¡+$500 MXN extra al comprar 2 boletos o más!
+                </div>
             </div>
 
+            <!-- DETALLES DE LA OFERTA -->
             <div class="text-center md:text-left">
                 <div class="flex justify-center md:justify-start">
-                    <span class="text-zinc-300 font-bold text-sm tracking-widest uppercase bg-zinc-800 px-3 py-1 rounded-lg inline-block mb-3 border border-zinc-700">#1 EDICIÓN</span>
+                    <span class="text-emerald-400 font-bold text-xs tracking-widest uppercase bg-emerald-950/60 px-3 py-1 rounded-lg inline-block mb-3 border border-emerald-800">
+                        ⚡ Rifa de Dinero #1
+                    </span>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-black mt-1 mb-4 text-white tracking-wide">Versace Eros EDT 100ml</h2>
+                <h2 class="text-3xl md:text-4xl font-black mt-1 mb-3 text-white tracking-wide">
+                    $2,000 Pesos en Efectivo
+                </h2>
                 <p class="text-zinc-300 text-sm mb-4 leading-relaxed">
-                    Participa en nuestra rifa oficial basada en el TRISCLASICO de la Loteria Nacional. Fragancia 100% original.
+                    Llévate dinero al instante participando en nuestro sorteo dinámico basado en las últimas cifras de la <strong>Lotería Nacional</strong>.
                 </p>
-                <p class="text-center md:text-left text-zinc-300 font-bold mt-4 mb-4">¡Oliendo caro a bajo costo!</p>
-                <!-- BONO ESPECIAL -->
-                <div class="bg-zinc-900 border border-zinc-700 p-4 rounded-xl mb-6 shadow-md text-left">
-                    <p class="font-bold text-sm text-white mb-1"><i class="fas fa-gift mr-1.5 text-zinc-400"></i> Bono Especial:</p>
-                    <p class="text-xs text-zinc-300 leading-relaxed">En la compra de 2 boletos o más, si resultas ganador te llevas adicionalmente un <strong>Nautica Voyage de 100 ml</strong>.</p>
+
+                <!-- BONO ESPECIAL OPORTUNIDAD -->
+                <div class="bg-gradient-to-r from-emerald-950/40 to-zinc-900 border border-emerald-500/40 p-4 rounded-xl mb-6 shadow-md text-left">
+                    <p class="font-bold text-sm text-emerald-300 mb-1 flex items-center">
+                        <i class="fas fa-gift mr-2 text-emerald-400"></i> ¡Bono de Oportunidad Extra!
+                    </p>
+                    <p class="text-xs text-zinc-300 leading-relaxed">
+                        Compra <strong>2 boletos o más</strong> y si tu número resulta ganador, ¡te llevas <strong>$2,500 MXN en total</strong>! ($500 MXN adicionales).
+                    </p>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4 mb-6">
                     <div class="bg-[#101010] p-4 rounded-xl border border-zinc-800 shadow-sm text-center md:text-left">
                         <span class="text-xs text-zinc-400 block font-medium">Costo por boleto</span>
-                        <span class="text-2xl font-black text-white">$35 MXN</span>
+                        <span class="text-2xl font-black text-emerald-400">$45 MXN</span>
                     </div>
                     <div class="bg-[#101010] p-4 rounded-xl border border-zinc-800 shadow-sm text-center md:text-left">
-                        <span class="text-xs text-zinc-400 block font-medium">Disponibilidad</span>
-                        <span class="text-lg font-bold text-zinc-100">Del 00 al 99</span>
+                        <span class="text-xs text-zinc-400 block font-medium">Boletos Totales</span>
+                        <span class="text-lg font-bold text-zinc-100">Solo 100 (00 al 99)</span>
                     </div>
                 </div>
 
                 <div>
-                    <button onclick="toggleBoletos()" class="w-full bg-white hover:bg-zinc-200 text-zinc-950 font-black py-4 px-6 rounded-xl text-center transition shadow-lg uppercase tracking-wider">
-                        <i class="fas fa-ticket-alt mr-2"></i> Elegir Mis Boletos
+                    <button onclick="toggleBoletos()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-black py-4 px-6 rounded-xl text-center transition shadow-lg uppercase tracking-wider text-sm flex items-center justify-center">
+                        <i class="fas fa-ticket-alt mr-2"></i> Elegir Mis Números
                     </button>
                 </div>
             </div>
@@ -76,7 +99,7 @@
             <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
                 <div>
                     <h3 class="text-2xl font-black text-white">Selecciona tus números</h3>
-                    <p class="text-xs text-zinc-400 mt-1">Puedes elegir uno o varios boletos antes de apartar.</p>
+                    <p class="text-xs text-zinc-400 mt-1">Sugerencia: Elige 2 boletos o más para activar el bono de $500 extra.</p>
                 </div>
                 <!-- Referencia de Colores -->
                 <div class="flex flex-wrap gap-3 text-xs bg-[#0d0d0d] p-3 rounded-xl border border-zinc-800">
@@ -90,11 +113,11 @@
             <div class="bg-[#0d0d0d] p-4 rounded-2xl border border-zinc-800 mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-xs text-zinc-300 font-medium mb-1">Nombre Completo:</label>
-                    <input type="text" id="cliente-nombre" placeholder="Tu nombre y apellido" class="w-full bg-[#161616] border border-zinc-700 text-white px-3 py-2.5 rounded-xl text-sm outline-none focus:border-white">
+                    <input type="text" id="cliente-nombre" placeholder="Tu nombre y apellido" class="w-full bg-[#161616] border border-zinc-700 text-white px-3 py-2.5 rounded-xl text-sm outline-none focus:border-emerald-500">
                 </div>
                 <div>
                     <label class="block text-xs text-zinc-300 font-medium mb-1">Número de Teléfono (WhatsApp):</label>
-                    <input type="tel" id="cliente-telefono" placeholder="Ej. 8441234567" class="w-full bg-[#161616] border border-zinc-700 text-white px-3 py-2.5 rounded-xl text-sm outline-none focus:border-white">
+                    <input type="tel" id="cliente-telefono" placeholder="Ej. 8441234567" class="w-full bg-[#161616] border border-zinc-700 text-white px-3 py-2.5 rounded-xl text-sm outline-none focus:border-emerald-500">
                 </div>
             </div>
 
@@ -110,12 +133,12 @@
         <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="text-center sm:text-left">
                 <p class="text-xs text-zinc-400">Boletos seleccionados: <strong id="txt-cantidad" class="text-zinc-200 text-sm">0</strong></p>
-                <p class="text-sm font-bold text-white">Total a pagar: <strong id="txt-total" class="text-white text-lg">$0 MXN</strong></p>
-                <p class="text-[10px] text-amber-400 font-medium mt-0.5"><i class="fas fa-exclamation-triangle mr-1"></i> Tienes 24 horas para pagar o tus boletos volverán a estar disponibles.</p>
+                <p class="text-sm font-bold text-white">Total a pagar: <strong id="txt-total" class="text-emerald-400 text-lg">$0 MXN</strong></p>
+                <p id="txt-bono-status" class="text-[11px] font-semibold mt-0.5 text-zinc-400"></p>
             </div>
             <div class="flex gap-3 w-full sm:w-auto">
                 <button onclick="limpiarSeleccion()" class="bg-[#0a0a0a] hover:bg-zinc-800 text-zinc-300 font-semibold px-4 py-3 rounded-xl text-xs transition border border-zinc-800">Limpiar</button>
-                <a id="btn-whatsapp-mult" href="#" target="_blank" onclick="guardarSeleccionComoApartados()" class="flex-1 sm:flex-none bg-white hover:bg-zinc-200 text-zinc-950 font-black px-6 py-3 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition flex items-center justify-center space-x-2 shadow-lg">
+                <a id="btn-whatsapp-mult" href="#" target="_blank" onclick="guardarSeleccionComoApartados()" class="flex-1 sm:flex-none bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-black px-6 py-3 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition flex items-center justify-center space-x-2 shadow-lg">
                     <i class="fab fa-whatsapp text-base"></i> <span>Apartar por WhatsApp</span>
                 </a>
             </div>
@@ -124,9 +147,9 @@
 
     <!-- APARTADO DE FECHA DE RIFA Y SOCIALES -->
     <div class="py-6 max-w-6xl mx-auto px-4">
-        <div class="bg-[#101010] border border-zinc-700 p-6 rounded-3xl shadow-md text-center">
+        <div class="bg-[#101010] border border-zinc-800 p-6 rounded-3xl shadow-md text-center">
             <p class="text-sm text-zinc-300 leading-relaxed mb-6">
-                📅 La fecha de la rifa será anunciada mediante nuestras redes al alcanzar el <strong>70% de boletos vendidos</strong>.
+                📅 La fecha del sorteo se anunciará en nuestras redes al alcanzar el <strong>80% de boletos vendidos</strong>. ¡Gana rápido!
             </p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -148,25 +171,25 @@
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <h2 class="text-2xl md:text-3xl font-black mb-4 text-white">¿Quiénes somos?</h2>
                 <p class="text-zinc-300 text-base leading-relaxed">
-                    Somos una comunidad saltillense aficionada de los perfumes, dedicada a llevar fragancias de alta calidad a bajo precio de forma transparente y accesible para todos.
+                    Somos un proyecto local de Saltillo enfocado en organizar rifas relámpago de dinero en efectivo. Garantizamos dinamismo, total transparencia y pagos inmediatos.
                 </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bg-[#161616] p-6 rounded-2xl border border-zinc-800 text-center shadow-lg">
-                    <div class="w-12 h-12 bg-zinc-800 text-white rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4 border border-zinc-700 shadow">1</div>
+                    <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4 border border-emerald-500/30 shadow">1</div>
                     <h3 class="font-bold text-lg mb-2 text-white">Elige tus números</h3>
-                    <p class="text-zinc-300 text-sm">Selecciona uno o todos los boletos que desees de la lista.</p>
+                    <p class="text-zinc-300 text-sm">Selecciona tus boletos favoritos (sugerido: 2 o más para activar bono).</p>
                 </div>
                 <div class="bg-[#161616] p-6 rounded-2xl border border-zinc-800 text-center shadow-lg">
-                    <div class="w-12 h-12 bg-zinc-800 text-white rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4 border border-zinc-700 shadow">2</div>
-                    <h3 class="font-bold text-lg mb-2 text-white">Realiza tu pago</h3>
-                    <p class="text-zinc-300 text-sm">Manda tu lista al WhatsApp, realiza tu pago y envía tu comprobante.</p>
+                    <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4 border border-emerald-500/30 shadow">2</div>
+                    <h3 class="font-bold text-lg mb-2 text-white">Aparta por WhatsApp</h3>
+                    <p class="text-zinc-300 text-sm">Envía tu lista por WhatsApp y realiza tu transferencia o depósito.</p>
                 </div>
                 <div class="bg-[#161616] p-6 rounded-2xl border border-zinc-800 text-center shadow-lg">
-                    <div class="w-12 h-12 bg-zinc-800 text-white rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4 border border-zinc-700 shadow">3</div>
-                    <h3 class="font-bold text-lg mb-2 text-white">¡Listo para ganar!</h3>
-                    <p class="text-zinc-300 text-sm">Confirmaré tu pago y tus números cambiarán oficialmente en el sistema.</p>
+                    <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4 border border-emerald-500/30 shadow">3</div>
+                    <h3 class="font-bold text-lg mb-2 text-white">¡Recibe tu Premio!</h3>
+                    <p class="text-zinc-300 text-sm">Si resultas ganador, te transferimos inmediatamente tu dinero acumulado.</p>
                 </div>
             </div>
         </div>
@@ -211,6 +234,7 @@
     <!-- SCRIPT DE INTERACTIVIDAD CONECTADO A SHEETDB -->
     <script>
         const SHEETDB_URL = 'https://sheetdb.io/api/v1/avy41sybj5eri';
+        const PRECIO_BOLETO = 45;
         let boletosData = [];
         let seleccionTemporarios = [];
 
@@ -241,8 +265,9 @@
             grid.innerHTML = '';
             let totalBoletos = boletosData.length > 0 ? boletosData.length : 100;
             for (let i = 0; i < totalBoletos; i++) {
-                let boletoInfo = boletosData[i] || { Numero: (i < 10 ? '0' + i : '' + i), Estado: 'Libre', Nombre: '' };
-                let numStr = boletoInfo.Numero;
+                let numFormateado = i < 10 ? '0' + i : '' + i;
+                let boletoInfo = boletosData[i] || { Numero: numFormateado, Estado: 'Libre', Nombre: '' };
+                let numStr = boletoInfo.Numero || numFormateado;
                 let estadoStr = boletoInfo.Estado ? boletoInfo.Estado.toLowerCase() : 'libre';
                 
                 let btn = document.createElement('button');
@@ -251,7 +276,7 @@
 
                 if (estadoStr === 'libre') {
                     if (seleccionTemporarios.includes(numStr)) {
-                        btn.className += " bg-zinc-400 text-zinc-950 ring-2 ring-white shadow-md";
+                        btn.className += " bg-emerald-400 text-zinc-950 ring-2 ring-white shadow-md";
                     } else {
                         btn.className += " bg-zinc-600 text-zinc-100 hover:bg-zinc-500 shadow-sm";
                     }
@@ -285,16 +310,33 @@
             const barra = document.getElementById('barra-carrito');
             const txtCantidad = document.getElementById('txt-cantidad');
             const txtTotal = document.getElementById('txt-total');
+            const txtBonoStatus = document.getElementById('txt-bono-status');
             const btnWhatsapp = document.getElementById('btn-whatsapp-mult');
+            
             let cantidad = seleccionTemporarios.length;
             if (cantidad > 0) {
                 barra.classList.remove('hidden');
                 txtCantidad.innerText = cantidad;
-                txtTotal.innerText = `$${cantidad * 35} MXN`;
+                let totalPagar = cantidad * PRECIO_BOLETO;
+                txtTotal.innerText = `$${totalPagar} MXN`;
+                
+                let aplicaBono = cantidad >= 2;
+                if(aplicaBono) {
+                    txtBonoStatus.className = "text-[11px] font-bold text-emerald-400 mt-0.5";
+                    txtBonoStatus.innerHTML = '<i class="fas fa-check-circle mr-1"></i> ¡Bono Activado! Participas por $2,500 MXN en total';
+                } else {
+                    txtBonoStatus.className = "text-[11px] font-medium text-amber-400 mt-0.5";
+                    txtBonoStatus.innerHTML = '💡 Agrega 1 boleto más para activar el Bono de $500 extras';
+                }
+
                 let nombre = document.getElementById('cliente-nombre').value.trim();
                 let telefono = document.getElementById('cliente-telefono').value.trim();
                 let numerosOrdenados = [...seleccionTemporarios].sort().join(', ');
-                let mensaje = encodeURIComponent(`Hola, Dinoscents 👋. Quiero apartar los siguientes boletos para la rifa de perfumes:\n\n👤 Nombre: *${nombre || 'No especificado'}*\n📱 Teléfono: *${telefono || 'No especificado'}*\n🔢 Números: *${numerosOrdenados}*\n💰 Total a pagar: *$${cantidad * 35} MXN*\n\n⚠️ (Recuerda que tengo 24 horas para realizar mi pago y enviar comprobante).`);
+                
+                let textoBono = aplicaBono ? '🔥 *¡Aplica Bono Extra de $500!* (Premio Total: *$2,500 MXN*)' : 'ℹ️ Premio Base: *$2,000 MXN*';
+                
+                let mensaje = encodeURIComponent(`Hola, Dinoscents 👋. Quiero apartar los siguientes boletos para la Rifa de $2,000 Pesos:\n\n👤 Nombre: *${nombre || 'No especificado'}*\n📱 Teléfono: *${telefono || 'No especificado'}*\n🔢 Números: *${numerosOrdenados}*\n💰 Total a pagar: *$${totalPagar} MXN*\n${textoBono}\n\n⚠️ (Tengo 24 horas para realizar mi pago y enviar comprobante).`);
+                
                 btnWhatsapp.href = `https://wa.me/522205521660?text=${mensaje}`;
             } else {
                 barra.classList.add('hidden');
