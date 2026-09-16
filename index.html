@@ -53,14 +53,14 @@
             <div class="text-center md:text-left">
                 <div class="flex justify-center md:justify-start">
                     <span class="text-zinc-200 font-bold text-xs tracking-widest uppercase bg-zinc-800 px-3 py-1 rounded-lg inline-block mb-3 border silver-border">
-                        #2 EDICIÓN OFICIAL
+                        #2 EDICIÓN
                     </span>
                 </div>
                 <h2 class="text-3xl md:text-4xl font-black mt-1 mb-3 text-white tracking-wide">
-                    Gran Sorteo Dinoscents
+                    $2,000 Pesos en Efectivo
                 </h2>
                 <p class="text-zinc-300 text-sm mb-4 leading-relaxed">
-                    Participa en nuestro segundo sorteo oficial basado en los últimos 2 dígitos del <strong>TRIS CLÁSICO de la Lotería Nacional</strong>.
+                    Participa en nuestro segundo sorteo oficial basado en los últimos 2 dígitos del TRIS CLÁSICO de la Lotería Nacional.
                 </p>
 
                 <div class="bg-zinc-900/80 border silver-border p-4 rounded-xl mb-6 shadow-md text-left">
@@ -68,7 +68,7 @@
                         <i class="fas fa-gift mr-2 text-zinc-300"></i> Bono Especial de Oportunidad:
                     </p>
                     <p class="text-xs text-zinc-300 leading-relaxed">
-                        En la compra de <strong>2 boletos o más</strong>, si resultas ganador te llevas adicionalmente <strong>$500 MXN extra</strong> en tu premio.
+                        En la compra de 2 boletos o más, si resultas ganador te llevas adicionalmente $500 MXN extra ($2,500 MXN en total).
                     </p>
                 </div>
 
@@ -157,7 +157,7 @@
                 </button>
             </div>
 
-            <!-- CORREGIDO: Se añadió 'hidden' para que no se muestre por defecto al cargar -->
+            <!-- Mantiene 'hidden' para que no aparezca por defecto -->
             <div id="resultado-comprobante" class="hidden max-w-lg mx-auto bg-[#09090b] border silver-border rounded-2xl p-6 relative overflow-hidden shadow-2xl">
                 <div class="absolute top-0 right-0 silver-gradient text-zinc-950 text-[10px] font-black px-4 py-1 rounded-bl-xl uppercase tracking-wider">
                     Oficial Dinoscents
@@ -227,6 +227,12 @@
                         <input type="text" id="admin-nums-liberar" placeholder="Ej. 01, 05" class="bg-[#09090b] border border-zinc-700 text-white px-3 py-2 rounded-xl text-sm flex-1 outline-none">
                         <button onclick="liberarBoletoAdmin()" class="bg-zinc-700 hover:bg-zinc-600 text-white text-xs font-black py-2 px-3 rounded-xl transition shadow">Liberar</button>
                     </div>
+                </div>
+                <!-- NUEVO BOTÓN: LIBERAR TODOS LOS BOLETOS -->
+                <div class="pt-2 border-t border-zinc-800">
+                    <button onclick="liberarTodosAdmin()" class="w-full bg-red-600/80 hover:bg-red-600 text-white text-xs font-black py-2.5 px-3 rounded-xl transition shadow flex items-center justify-center space-x-1">
+                        <i class="fas fa-trash-alt mr-1"></i> <span>Liberar Todos los Boletos</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -493,6 +499,25 @@
                 alert("Boletos liberados");
                 document.getElementById('admin-nums-liberar').value = '';
                 cargarBoletosDesdeFirestore();
+            });
+        }
+
+        function liberarTodosAdmin() {
+            if (!confirm("⚠️ ¿Estás seguro de liberar TODOS los boletos del 00 al 99? Esta acción reiniciará el sorteo.")) return;
+            
+            let batch = db.batch();
+            for (let i = 0; i < 100; i++) {
+                let numStr = i < 10 ? '0' + i : '' + i;
+                let docRef = db.collection("boletos").doc(numStr);
+                batch.set(docRef, { Estado: "Libre", Nombre: "" }, { merge: true });
+            }
+            
+            batch.commit().then(() => {
+                alert("¡Todos los boletos han sido liberados exitosamente!");
+                cargarBoletosDesdeFirestore();
+            }).catch(err => {
+                console.error("Error al liberar todos: ", err);
+                alert("Hubo un error al intentar liberar los boletos.");
             });
         }
     </script>
