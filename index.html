@@ -537,6 +537,11 @@
                 alert("Hubo un error al intentar liberar los boletos.");
             });
         }
+                function cerrarComprobante() {
+            document.getElementById('resultado-comprobante').classList.add('hidden');
+            document.getElementById('busqueda-input').value = '';
+        }
+
     </script>
 </body>
 </html>
