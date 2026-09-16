@@ -146,11 +146,11 @@
         </div>
     </div>
 
-    <!-- SECCIÓN: VERIFICADOR DE BOLETOS -->
+    <!-- SECCIÓN: VERIFICADOR DE BOLETOS (Título más grande) -->
     <section id="verificador-section" class="py-12 px-4 max-w-4xl mx-auto">
         <div class="bg-[#121215] border border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl">
-            <div class="text-center max-w-xl mx-auto mb-6">
-                <span class="text-zinc-200 font-bold text-xs tracking-widest uppercase bg-zinc-800 px-3 py-1 rounded-lg border silver-border">VERIFICADOR DE BOLETOS</span>
+            <div class="text-center max-w-2xl mx-auto mb-6 p-4 bg-zinc-900/60 border border-zinc-800/80 rounded-2xl shadow-inner">
+                <span class="text-zinc-200 font-extrabold text-sm tracking-widest uppercase bg-zinc-800 px-4 py-1.5 rounded-xl border silver-border inline-block mb-3">VERIFICADOR DE BOLETOS</span>
                 
                 <p class="text-xs text-zinc-400 mt-1">Ingresa tu <strong>número de boleto (2 dígitos, ej. 02)</strong> o tu <strong>teléfono de WhatsApp (10 dígitos)</strong> para consultar tu comprobante.</p>
             </div>
@@ -186,7 +186,7 @@
                 <div class="border-t border-b border-zinc-800 py-3 my-3 space-y-2 text-xs">
                     <div class="flex justify-between"><span class="text-zinc-400">Titular:</span><strong id="comp-nombre" class="text-white font-bold">---</strong></div>
                     <div class="flex justify-between"><span class="text-zinc-400">Teléfono:</span><strong id="comp-telefono" class="text-white font-bold">---</strong></div>
-                    <div class="flex justify-between"><span class="text-zinc-400">Sorteo:</span><strong class="text-zinc-200 font-bold">Sorteo Activo</strong></div>
+                    <div class="flex justify-between"><span class="text-zinc-400">Sorteo:</span><strong class="text-zinc-200 font-bold">$2000 + $500 de bono</strong></div>
                     <div class="flex justify-between"><span class="text-zinc-400">Boletos Asignados:</span><strong id="comp-numeros" class="text-white font-black text-sm">---</strong></div>
                     <div class="flex justify-between"><span class="text-zinc-400">Monto Inscrito:</span><strong id="comp-monto" class="text-white font-bold">---</strong></div>
                     <div class="flex justify-between"><span class="text-zinc-400">Estado del Pago:</span><span id="comp-estado" class="font-black px-2 py-0.5 rounded text-[11px]">---</span></div>
@@ -382,8 +382,16 @@
                 let totalPagar = cantidad * PRECIO_BOLETO;
                 txtTotal.innerText = `$${totalPagar} MXN`;
                 
-                txtBonoStatus.className = "text-[11px] font-medium text-zinc-400 mt-0.5";
-                txtBonoStatus.innerHTML = '✨ ¡Excelente selección de números!';
+                txtBonoStatus.className = "text-[11px] font-semibold mt-0.5 text-amber-400";
+                
+                // Mensaje dinámico según cantidad seleccionada
+                if (cantidad === 1) {
+                    txtBonoStatus.innerHTML = '✨ Escoge uno mas para participar por el bono';
+                } else if (cantidad >= 2) {
+                    txtBonoStatus.innerHTML = '🎉 ¡Ya participas por el bono de 500!';
+                } else {
+                    txtBonoStatus.innerHTML = '';
+                }
 
                 let nombre = document.getElementById('cliente-nombre').value.trim();
                 let telefono = document.getElementById('cliente-telefono').value.trim();
@@ -472,7 +480,7 @@
                     elEstado.innerText = 'PAGADO ✓';
                     elEstado.className = "bg-blue-600 text-white font-black px-2 py-0.5 rounded text-[11px]";
                 } else {
-                    elEstado.innerText = 'APARTADO (PENDIENTE)';
+                    elEstado.innerText = 'Apartado';
                     elEstado.className = "bg-amber-500 text-zinc-950 font-black px-2 py-0.5 rounded text-[11px]";
                 }
 
@@ -548,7 +556,7 @@
         }
         function cerrarBoletosSection() {
             document.getElementById('boletos-section').classList.add('hidden');
-            limpiarSeleccion(); // Opcional: limpia los números seleccionados si cierra la tabla
+            limpiarSeleccion(); 
         }
 
     </script>
