@@ -243,16 +243,16 @@
         </div>
     </div>
 
-    <!-- SCRIPT CONECTADO A FIRESTORE -->
+    <!-- SCRIPT CONECTADO A FIRESTORE CON TUS CREDENCIALES -->
     <script>
-        // CONFIGURACIÓN DE TU FIRESTORE
         const firebaseConfig = {
-            apiKey: "TU_API_KEY",
-            authDomain: "TU_DOMINIO.firebaseapp.com",
-            projectId: "TU_PROJECT_ID",
-            storageBucket: "TU_STORAGE.appspot.com",
-            messagingSenderId: "TU_SENDER_ID",
-            appId: "TU_APP_ID"
+            apiKey: "AIzaSyDT70gKVX7FBA6PCp_ZWOo-aTkfrrKNIyg",
+            authDomain: "dinoscents-sorteos.firebaseapp.com",
+            projectId: "dinoscents-sorteos",
+            storageBucket: "dinoscents-sorteos.firebasestorage.app",
+            messagingSenderId: "1089677957066",
+            appId: "1:1089677957066:web:748257e5c5cec33eaca133",
+            measurementId: "G-S2BXQR20PW"
         };
 
         firebase.initializeApp(firebaseConfig);
@@ -279,7 +279,6 @@
                         boletosData.push(doc.data());
                     });
                     
-                    // Si Firestore está vacío, crea los 100 boletos automáticamente
                     if (boletosData.length === 0) {
                         let batch = db.batch();
                         for (let i = 0; i < 100; i++) {
