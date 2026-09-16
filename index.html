@@ -139,7 +139,7 @@
             </div>
             <div class="flex gap-3 w-full sm:w-auto">
                 <button onclick="limpiarSeleccion()" class="bg-[#09090b] hover:bg-zinc-800 text-zinc-300 font-semibold px-4 py-3 rounded-xl text-xs transition border border-zinc-800">Limpiar</button>
-                <a id="btn-whatsapp-mult" href="#" target="_blank" onclick="guardarSeleccionComoApartados()" class="flex-1 sm:flex-none silver-gradient hover:opacity-90 text-zinc-950 font-black px-6 py-3 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition flex items-center justify-center space-x-2 shadow-lg">
+                <a id="btn-whatsapp-mult" href="#" target="_blank" onclick="guardarSeleccionComoApartados(event)" class="flex-1 sm:flex-none silver-gradient hover:opacity-90 text-zinc-950 font-black px-6 py-3 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition flex items-center justify-center space-x-2 shadow-lg">
                     <i class="fab fa-whatsapp text-base"></i> <span>Apartar por WhatsApp</span>
                 </a>
             </div>
@@ -162,8 +162,8 @@
                 </button>
             </div>
 
-                        <!-- Mantiene 'hidden' para que no aparezca por defecto -->
-                        <div id="resultado-comprobante" class="hidden max-w-lg mx-auto bg-[#09090b] border silver-border rounded-2xl p-6 relative overflow-hidden shadow-2xl">
+            <!-- Mantiene 'hidden' para que no aparezca por defecto -->
+            <div id="resultado-comprobante" class="hidden max-w-lg mx-auto bg-[#09090b] border silver-border rounded-2xl p-6 relative overflow-hidden shadow-2xl">
                 <!-- Encabezado con Etiqueta y Botón Cerrar alineados -->
                 <div class="flex justify-between items-center mb-4">
                     <span class="silver-gradient text-zinc-950 text-[10px] font-black px-3 py-1 rounded-lg uppercase tracking-wider">
@@ -408,28 +408,65 @@
         document.getElementById('cliente-nombre').addEventListener('input', actualizarBarraCarrito);
         document.getElementById('cliente-telefono').addEventListener('input', actualizarBarraCarrito);
 
-        function guardarSeleccionComoApartados() {
+        // FUNCIÓN MODIFICADA CON TRANSACCIÓN ATÓMICA DE FIREBASE
+        function guardarSeleccionComoApartados(event) {
+            if (event) event.preventDefault();
+
             let nombre = document.getElementById('cliente-nombre').value.trim();
             let telefono = document.getElementById('cliente-telefono').value.trim();
+            
             if(!nombre || !telefono) {
                 alert("Por favor ingresa tu nombre completo y teléfono antes de apartar.");
-                event.preventDefault();
                 return;
             }
-            let batch = db.batch();
-            seleccionTemporarios.forEach(num => {
-                let docRef = db.collection("boletos").doc(num);
-                batch.set(docRef, {
-                    "Numero": num,
-                    "Estado": "Apartado",
-                    "Nombre": `${nombre} (${telefono})`
-                }, { merge: true });
-            });
-            batch.commit().then(() => {
+
+            if (seleccionTemporarios.length === 0) {
+                alert("No has seleccionado ningún boleto.");
+                return;
+            }
+
+            let numerosAptar = [...seleccionTemporarios];
+
+            db.runTransaction(async (transaction) => {
+                let lecturas = [];
+                for (let num of numerosAptar) {
+                    let docRef = db.collection("boletos").doc(num);
+                    lecturas.push({ num, docRef, docSnap: await transaction.get(docRef) });
+                }
+
+                for (let item of lecturas) {
+                    let data = item.docSnap.exists ? item.docSnap.data() : null;
+                    let estadoActual = data && data.Estado ? String(data.Estado).toLowerCase() : 'libre';
+                    
+                    if (estadoActual !== 'libre') {
+                        throw { tipo: "OCUPADO", numero: item.num };
+                    }
+                }
+
+                for (let item of lecturas) {
+                    transaction.set(item.docRef, {
+                        "Numero": item.num,
+                        "Estado": "Apartado",
+                        "Nombre": `${nombre} (${telefono})`
+                    }, { merge: true });
+                }
+
+            }).then(() => {
+                let btnWhatsapp = document.getElementById('btn-whatsapp-mult');
+                if (btnWhatsapp && btnWhatsapp.href) {
+                    window.open(btnWhatsapp.href, '_blank');
+                }
+
                 seleccionTemporarios = [];
                 cargarBoletosDesdeFirestore();
-            }).catch(err => {
-                console.error("Error al apartar:", err);
+            }).catch((error) => {
+                if (error && error.tipo === "OCUPADO") {
+                    alert(`⚠️ ¡Vaya! El boleto #${error.numero} acaba de ser apartado por otra persona. Por favor, elige otro.`);
+                } else {
+                    console.error("Error crítico al apartar en transacción:", error);
+                    alert("Ocurrió un error al procesar tu apartado. Inténtalo de nuevo.");
+                }
+                cargarBoletosDesdeFirestore();
             });
         }
 
@@ -550,7 +587,7 @@
                 alert("Hubo un error al intentar liberar los boletos.");
             });
         }
-                function cerrarComprobante() {
+        function cerrarComprobante() {
             document.getElementById('resultado-comprobante').classList.add('hidden');
             document.getElementById('busqueda-input').value = '';
         }
