@@ -147,7 +147,7 @@
             <div class="text-center max-w-xl mx-auto mb-6">
                 <span class="text-zinc-200 font-bold text-xs tracking-widest uppercase bg-zinc-800 px-3 py-1 rounded-lg border silver-border">Consulta tu Boleto</span>
                 <h3 class="text-2xl font-black text-white mt-2">Verificador de Boletos Comprados</h3>
-                <p class="text-xs text-zinc-400 mt-1">Ingresa exactamente tu <strong>número de boleto (2 dígitos, ej. 02)</strong> o tu <strong>teléfono de WhatsApp (10 dígitos)</strong> para consultar tu comprobante.</p>
+                <p class="text-xs text-zinc-400 mt-1">Ingresa tu <strong>número de boleto (2 dígitos, ej. 02)</strong> o tu <strong>teléfono de WhatsApp (10 dígitos)</strong> para consultar tu comprobante.</p>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6">
@@ -157,11 +157,18 @@
                 </button>
             </div>
 
-            <!-- Mantiene 'hidden' para que no aparezca por defecto -->
+                        <!-- Mantiene 'hidden' para que no aparezca por defecto -->
             <div id="resultado-comprobante" class="hidden max-w-lg mx-auto bg-[#09090b] border silver-border rounded-2xl p-6 relative overflow-hidden shadow-2xl">
-                <div class="absolute top-0 right-0 silver-gradient text-zinc-950 text-[10px] font-black px-4 py-1 rounded-bl-xl uppercase tracking-wider">
-                    Oficial Dinoscents
+                <div class="absolute top-0 right-0 flex items-center">
+                    <span class="silver-gradient text-zinc-950 text-[10px] font-black px-4 py-1 rounded-bl-xl uppercase tracking-wider">
+                        Oficial Dinoscents
+                    </span>
                 </div>
+                <!-- Botón Cerrar -->
+                <button onclick="cerrarComprobante()" class="absolute top-2 left-2 text-zinc-400 hover:text-white bg-zinc-800/80 hover:bg-zinc-800 w-7 h-7 rounded-full flex items-center justify-center text-xs transition z-10" title="Cerrar">
+                    <i class="fas fa-times"></i>
+                </button>
+
                 <div class="flex items-center space-x-3 mb-4">
                     <img src="https://i.postimg.cc/D0dtHjJy/IMG-20260915-WA0016.jpg" alt="Logo Dinoscents" class="w-10 h-10 rounded-lg object-cover bg-white shadow">
                     <div>
