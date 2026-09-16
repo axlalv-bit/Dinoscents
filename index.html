@@ -45,32 +45,19 @@
     <section id="sorteo" class="py-12 px-4 max-w-6xl mx-auto">
         <div class="bg-[#121215] border border-zinc-800 rounded-3xl p-6 md:p-10 shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             
-            <div class="relative group flex flex-col justify-center items-center bg-gradient-to-br from-zinc-900 via-[#0d0d0f] to-[#0d0d0f] p-8 rounded-2xl border silver-border shadow-inner min-h-[320px] text-center">
-                <span class="absolute top-4 left-4 silver-gradient text-zinc-950 font-black text-xs uppercase px-3 py-1 rounded-full shadow-md z-10">
-                    <i class="fas fa-star mr-1"></i> Evento #2
-                </span>
-                
-                <div class="w-28 h-28 bg-zinc-800 border silver-border rounded-2xl flex items-center justify-center mb-4 shadow-lg overflow-hidden">
-                    <img src="https://i.postimg.cc/hGdZNy66/IMG-20260915-WA0017.jpg" alt="Premio Efectivo" class="w-full h-full object-cover">
-                </div>
-
-                <span class="text-xs font-bold text-zinc-400 uppercase tracking-widest">Premio Principal</span>
-                <h3 class="text-4xl md:text-5xl font-black text-white tracking-tight my-1">$2,000 <span class="text-lg text-zinc-400">MXN</span></h3>
-                <p class="text-xs text-zinc-400 font-medium">Transferencia Inmediata / Efectivo</p>
-                
-                <div class="mt-4 bg-zinc-800/60 border silver-border px-4 py-2 rounded-xl text-xs text-zinc-200 font-semibold">
-                    🎁 ¡+$500 MXN de Bono acumulado al comprar 2 boletos o más!
-                </div>
+            <!-- CONTENEDOR CON LA IMAGEN A LA TOTALIDAD DEL RECUADRO -->
+            <div class="relative group flex flex-col justify-center items-center bg-zinc-900 rounded-2xl border silver-border shadow-inner overflow-hidden min-h-[380px]">
+                <img src="https://i.postimg.cc/hGdZNy66/IMG-20260915-WA0017.jpg" alt="Evento #2 Dinoscents" class="absolute inset-0 w-full h-full object-cover">
             </div>
 
             <div class="text-center md:text-left">
                 <div class="flex justify-center md:justify-start">
                     <span class="text-zinc-200 font-bold text-xs tracking-widest uppercase bg-zinc-800 px-3 py-1 rounded-lg inline-block mb-3 border silver-border">
-                        #2 EDICIÓN
+                        #2 EDICIÓN OFICIAL
                     </span>
                 </div>
                 <h2 class="text-3xl md:text-4xl font-black mt-1 mb-3 text-white tracking-wide">
-                    $2,000 Pesos en Efectivo
+                    Gran Sorteo Dinoscents
                 </h2>
                 <p class="text-zinc-300 text-sm mb-4 leading-relaxed">
                     Participa en nuestro segundo sorteo oficial basado en los últimos 2 dígitos del <strong>TRIS CLÁSICO de la Lotería Nacional</strong>.
@@ -81,7 +68,7 @@
                         <i class="fas fa-gift mr-2 text-zinc-300"></i> Bono Especial de Oportunidad:
                     </p>
                     <p class="text-xs text-zinc-300 leading-relaxed">
-                        En la compra de <strong>2 boletos o más</strong>, si resultas ganador te llevas adicionalmente <strong>$500 MXN extra</strong> ($2,500 MXN en total).
+                        En la compra de <strong>2 boletos o más</strong>, si resultas ganador te llevas adicionalmente <strong>$500 MXN extra</strong> en tu premio.
                     </p>
                 </div>
 
@@ -170,6 +157,7 @@
                 </button>
             </div>
 
+            <!-- CORREGIDO: Se añadió 'hidden' para que no se muestre por defecto al cargar -->
             <div id="resultado-comprobante" class="hidden max-w-lg mx-auto bg-[#09090b] border silver-border rounded-2xl p-6 relative overflow-hidden shadow-2xl">
                 <div class="absolute top-0 right-0 silver-gradient text-zinc-950 text-[10px] font-black px-4 py-1 rounded-bl-xl uppercase tracking-wider">
                     Oficial Dinoscents
@@ -185,7 +173,7 @@
                 <div class="border-t border-b border-zinc-800 py-3 my-3 space-y-2 text-xs">
                     <div class="flex justify-between"><span class="text-zinc-400">Titular:</span><strong id="comp-nombre" class="text-white font-bold">---</strong></div>
                     <div class="flex justify-between"><span class="text-zinc-400">Teléfono:</span><strong id="comp-telefono" class="text-white font-bold">---</strong></div>
-                    <div class="flex justify-between"><span class="text-zinc-400">Sorteo:</span><strong class="text-zinc-200 font-bold">Evento #2 ($2,000 MXN)</strong></div>
+                    <div class="flex justify-between"><span class="text-zinc-400">Sorteo:</span><strong class="text-zinc-200 font-bold">Evento #2</strong></div>
                     <div class="flex justify-between"><span class="text-zinc-400">Boletos Asignados:</span><strong id="comp-numeros" class="text-white font-black text-sm">---</strong></div>
                     <div class="flex justify-between"><span class="text-zinc-400">Monto Inscrito:</span><strong id="comp-monto" class="text-white font-bold">---</strong></div>
                     <div class="flex justify-between"><span class="text-zinc-400">Estado del Pago:</span><span id="comp-estado" class="font-black px-2 py-0.5 rounded text-[11px]">---</span></div>
@@ -362,7 +350,7 @@
                 let aplicaBono = cantidad >= 2;
                 if(aplicaBono) {
                     txtBonoStatus.className = "text-[11px] font-bold text-white mt-0.5";
-                    txtBonoStatus.innerHTML = '<i class="fas fa-check-circle mr-1"></i> ¡Bono Activado! Participas por $2,500 MXN en total';
+                    txtBonoStatus.innerHTML = '<i class="fas fa-check-circle mr-1"></i> ¡Bono Activado! Participas por el premio con bono extra';
                 } else {
                     txtBonoStatus.className = "text-[11px] font-medium text-zinc-400 mt-0.5";
                     txtBonoStatus.innerHTML = '💡 Agrega 1 boleto más para activar el Bono de $500 extras';
@@ -371,9 +359,9 @@
                 let nombre = document.getElementById('cliente-nombre').value.trim();
                 let telefono = document.getElementById('cliente-telefono').value.trim();
                 let numerosOrdenados = [...seleccionTemporarios].sort().join(', ');
-                let textoBono = aplicaBono ? '🔥 *¡Aplica Bono Extra de $500!* (Premio Total: *$2,500 MXN*)' : 'ℹ️ Premio Base: *$2,000 MXN*';
+                let textoBono = aplicaBono ? '🔥 *¡Aplica Bono Extra de $500!*' : '';
                 
-                let mensaje = encodeURIComponent(`Hola, Dinoscents 👋. Quiero apartar los siguientes boletos para la Rifa de $2,000 Pesos (Evento #2):\n\n👤 Nombre: *${nombre || 'No especificado'}*\n📱 Teléfono: *${telefono || 'No especificado'}*\n🔢 Números: *${numerosOrdenados}*\n💰 Total a pagar: *$${totalPagar} MXN*\n${textoBono}\n\n⚠️ (Tengo 24 horas para realizar mi pago y enviar comprobante).`);
+                let mensaje = encodeURIComponent(`Hola, Dinoscents 👋. Quiero apartar los siguientes boletos para el Evento #2:\n\n👤 Nombre: *${nombre || 'No especificado'}*\n📱 Teléfono: *${telefono || 'No especificado'}*\n🔢 Números: *${numerosOrdenados}*\n💰 Total a pagar: *$${totalPagar} MXN*\n${textoBono}\n\n⚠️ (Tengo 24 horas para realizar mi pago y enviar comprobante).`);
                 
                 btnWhatsapp.href = `https://wa.me/522205521660?text=${mensaje}`;
             } else {
