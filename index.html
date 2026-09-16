@@ -333,14 +333,21 @@
                 .then(snapshot => {
                     const data = snapshot.val();
                     if (data) {
-                        // Firebase puede devolver un objeto o un arreglo indexado
                         if (Array.isArray(data)) {
                             boletosData = data;
                         } else {
                             boletosData = Object.keys(data).map(key => data[key]);
                         }
                     } else {
+                        // Si Firebase está vacío, inicializamos automáticamente los 100 boletos libres
                         boletosData = [];
+                        let initialData = {};
+                        for (let i = 0; i < 100; i++) {
+                            let numStr = i < 10 ? '0' + i : '' + i;
+                            initialData[i] = { Numero: numStr, Estado: 'Libre', Nombre: '' };
+                            boletosData.push(initialData[i]);
+                        }
+                        database.ref('boletos').set(initialData);
                     }
                     renderizarBoletos();
                 })
