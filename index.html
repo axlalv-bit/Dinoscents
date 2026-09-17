@@ -3,617 +3,2788 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Dinoscents Saltillo | Sorteo Oficial</title>
+
     <meta property="og:title" content="Dinoscents Saltillo | Sorteo Oficial">
-<meta property="og:description" content="Participa en nuestro sorteo oficial. ¡Elige tus números!">
+    <meta property="og:description" content="Participa en nuestro sorteo oficial. ¡Elige tus números!">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- FIREBASE SDKs (Firestore) -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
     <style>
         .silver-gradient {
-            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%);
+            background: linear-gradient(
+                135deg,
+                #ffffff 0%,
+                #e2e8f0 50%,
+                #94a3b8 100%
+            );
         }
+
         .silver-border {
             border-color: rgba(226, 232, 240, 0.2);
         }
+
+        .btn-disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
     </style>
 </head>
+
 <body class="bg-[#09090b] text-zinc-100 font-sans pb-24">
 
-    <!-- HEADER / NAVEGACIÓN -->
-    <header class="bg-[#121215] border-b border-zinc-800 sticky top-0 z-50 shadow-md">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <img src="https://i.postimg.cc/D0dtHjJy/IMG-20260915-WA0016.jpg" alt="Logo Dinoscents" class="w-10 h-10 rounded-xl object-cover shadow-lg bg-white">
-                <div>
-                    <h1 class="text-xl font-black tracking-wider text-white">DINOSCENTS</h1>
-                    <p class="text-xs text-zinc-400 uppercase tracking-widest font-semibold">Saltillo</p>
-                </div>
-            </div>
-            <nav class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="#sorteo" class="text-zinc-300 hover:text-white transition">Sorteo Activo</a>
-                <a href="#boletos-section" class="text-zinc-300 hover:text-white transition">Boletos</a>
-                <a href="#verificador-section" class="text-zinc-300 hover:text-white transition"><i class="fas fa-search mr-1"></i> Consultar Boleto</a>
-                <a href="#quienes-somos" class="text-white hover:text-zinc-300 font-bold transition">¿Quiénes somos?</a>
-            </nav>
-        </div>
-    </header>
+<!-- ========================================================= -->
+<!-- HEADER -->
+<!-- ========================================================= -->
 
-    <!-- SECCIÓN: SORTEO PRINCIPAL -->
-    <section id="sorteo" class="py-12 px-4 max-w-6xl mx-auto">
-        <div class="bg-[#121215] border border-zinc-800 rounded-3xl p-6 md:p-10 shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            
-            
-            <div class="relative group flex flex-col justify-center items-center bg-zinc-900 rounded-2xl border silver-border shadow-inner overflow-hidden min-h-[380px]">
-             <img src="https://i.postimg.cc/hGdZNy66/IMG-20260915-WA0017.jpg" class="w-full h-auto max-h-[400px] object-contain mx-auto" alt="Sorteo">
-            </div>
+<header class="bg-[#121215] border-b border-zinc-800 sticky top-0 z-50 shadow-md">
 
-            <div class="text-center md:text-left">
-                <div class="flex justify-center md:justify-start">
-                    <span class="text-zinc-200 font-bold text-xs tracking-widest uppercase bg-zinc-800 px-3 py-1 rounded-lg inline-block mb-3 border silver-border">
-                        EDICIÓN #2
-                    </span>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-black mt-1 mb-3 text-white tracking-wide">
-                    $2000 + $500 de bono
-                </h2>
-                <p class="text-zinc-300 text-sm mb-4 leading-relaxed">
-                    
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+
+        <div class="flex items-center space-x-3">
+
+            <img
+                src="https://i.postimg.cc/D0dtHjJy/IMG-20260915-WA0016.jpg"
+                alt="Logo Dinoscents"
+                class="w-10 h-10 rounded-xl object-cover shadow-lg bg-white"
+            >
+
+            <div>
+
+                <h1 class="text-xl font-black tracking-wider text-white">
+                    DINOSCENTS
+                </h1>
+
+                <p class="text-xs text-zinc-400 uppercase tracking-widest font-semibold">
+                    Saltillo
                 </p>
 
-                <div class="bg-zinc-900/80 border silver-border p-4 rounded-xl mb-6 shadow-md text-left">
-                    <p class="font-bold text-sm text-white mb-1 flex items-center">
-                        <i class="fas fa-gift mr-2 text-zinc-300"></i> Dinámica y Oportunidad:
-                    </p>
-                    <p class="text-xs text-zinc-300 leading-relaxed">
-                        Participa en nuestro sorteo oficial basado en los últimos 2 dígitos del TRIS CLÁSICO de la Lotería Nacional.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                    <div class="bg-[#09090b] p-4 rounded-xl border border-zinc-800 shadow-sm text-center md:text-left">
-                        <span class="text-xs text-zinc-400 block font-medium">Costo por boleto</span>
-                        <span class="text-2xl font-black text-white">$45 MXN</span>
-                    </div>
-                    <div class="bg-[#09090b] p-4 rounded-xl border border-zinc-800 shadow-sm text-center md:text-left">
-                        <span class="text-xs text-zinc-400 block font-medium">Disponibilidad</span>
-                        <span class="text-lg font-bold text-zinc-100">Del 00 al 99</span>
-                    </div>
-                </div>
-
-                <div>
-                    <button onclick="toggleBoletos()" class="w-full silver-gradient hover:opacity-90 text-zinc-950 font-black py-4 px-6 rounded-xl text-center transition shadow-lg uppercase tracking-wider text-sm flex items-center justify-center">
-                        <i class="fas fa-ticket-alt mr-2"></i> Elegir Mis Boletos
-                    </button>
-                </div>
             </div>
+
         </div>
-    </section>
 
-        <!-- SECCIÓN DE BOLETOS INTERACTIVA (00 - 99) -->
-    <section id="boletos-section" class="py-12 px-4 max-w-4xl mx-auto hidden">
-        <div class="bg-[#121215] border border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl relative">
-            <!-- Botón Cerrar Tabla -->
-            <button onclick="cerrarBoletosSection()" class="absolute top-4 right-4 text-zinc-400 hover:text-white bg-zinc-800 hover:bg-zinc-700 w-8 h-8 rounded-full flex items-center justify-center text-xs transition shadow z-10" title="Cerrar">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4 pr-10">
-                <div>
-                    <h3 class="text-2xl font-black text-white">Selecciona tus números</h3>
-                    <p class="text-xs text-zinc-400 mt-1">Puedes elegir uno o varios boletos antes de apartar.</p>
-                </div>
 
-                <div class="flex flex-wrap gap-3 text-xs bg-[#09090b] p-3 rounded-xl border border-zinc-800">
-                    <div class="flex items-center space-x-1.5"><span class="w-3 h-3 bg-zinc-600 rounded-full inline-block shadow"></span><span class="text-zinc-300">Disponible</span></div>
-                    <div class="flex items-center space-x-1.5"><span class="w-3 h-3 bg-amber-500 rounded-full inline-block shadow"></span><span class="text-zinc-300">Apartado</span></div>
-                    <div class="flex items-center space-x-1.5"><span class="w-3 h-3 bg-blue-600 rounded-full inline-block shadow"></span><span class="text-zinc-300">Pagado</span></div>
-                </div>
-            </div>
+        <nav class="hidden md:flex space-x-6 text-sm font-medium">
 
-            <div class="bg-[#09090b] p-4 rounded-2xl border border-zinc-800 mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-xs text-zinc-300 font-medium mb-1">Nombre Completo:</label>
-                    <input type="text" id="cliente-nombre" placeholder="Tu nombre y apellido" class="w-full bg-[#121215] border border-zinc-700 text-white px-3 py-2.5 rounded-xl text-sm outline-none focus:border-white">
-                </div>
-                <div>
-                    <label class="block text-xs text-zinc-300 font-medium mb-1">Número de Teléfono (WhatsApp):</label>
-                    <input type="tel" id="cliente-telefono" placeholder="Ej. 8441234567" class="w-full bg-[#121215] border border-zinc-700 text-white px-3 py-2.5 rounded-xl text-sm outline-none focus:border-white">
-                </div>
-            </div>
+            <a href="#sorteo"
+               class="text-zinc-300 hover:text-white transition">
+                Sorteo Activo
+            </a>
 
-            <div id="grid-boletos" class="grid grid-cols-5 sm:grid-cols-10 gap-2.5 max-h-96 overflow-y-auto p-3 bg-[#09090b] rounded-2xl border border-zinc-800 shadow-inner">
-                <!-- Se generan automáticamente -->
-            </div>
-        </div>
-    </section>
+            <a href="#boletos-section"
+               class="text-zinc-300 hover:text-white transition">
+                Boletos
+            </a>
 
-    <!-- BARRA FLOTANTE DE COMPRA MÚLTIPLE -->
-    <div id="barra-carrito" class="fixed bottom-0 left-0 right-0 bg-[#121215]/95 border-t border-zinc-800 p-4 z-40 hidden backdrop-blur-md shadow-2xl transition-all">
-        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div class="text-center sm:text-left">
-                <p class="text-xs text-zinc-400">Boletos seleccionados: <strong id="txt-cantidad" class="text-zinc-200 text-sm">0</strong></p>
-                <p class="text-sm font-bold text-white">Total a pagar: <strong id="txt-total" class="text-white text-lg">$0 MXN</strong></p>
-                <p id="txt-bono-status" class="text-[11px] font-semibold mt-0.5 text-zinc-400"></p>
-            </div>
-            <div class="flex gap-3 w-full sm:w-auto">
-                <button onclick="limpiarSeleccion()" class="bg-[#09090b] hover:bg-zinc-800 text-zinc-300 font-semibold px-4 py-3 rounded-xl text-xs transition border border-zinc-800">Limpiar</button>
-                <a id="btn-whatsapp-mult" href="#" onclick="guardarSeleccionComoApartados(event)" class="flex-1 sm:flex-none silver-gradient hover:opacity-90 text-zinc-950 font-black px-6 py-3 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition flex items-center justify-center space-x-2 shadow-lg">
-                    <i class="fab fa-whatsapp text-base"></i> <span>Apartar por WhatsApp</span>
-                </a>
-            </div>
-        </div>
+            <a href="#verificador-section"
+               class="text-zinc-300 hover:text-white transition">
+                <i class="fas fa-search mr-1"></i>
+                Consultar Boleto
+            </a>
+
+            <a href="#quienes-somos"
+               class="text-white hover:text-zinc-300 font-bold transition">
+                ¿Quiénes somos?
+            </a>
+
+        </nav>
+
     </div>
-<div style="text-align: center; margin: 20px 0;">
-    <a href="https://whatsapp.com/channel/0029VbDnYuc6GcGNAqHrqX1x" target="_blank" style="
-        background-color: #25D366;
-        color: white;
-        padding: 12px 24px;
-        text-decoration: none;
-        font-family: sans-serif;
-        font-weight: bold;
-        border-radius: 8px;
-        display: inline-block;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    ">
-        📢 Únete a nuestro Canal de Difusión en WhatsApp
-    </a>
+
+</header>
+
+
+<!-- ========================================================= -->
+<!-- SORTEO PRINCIPAL -->
+<!-- ========================================================= -->
+
+<section id="sorteo" class="py-12 px-4 max-w-6xl mx-auto">
+
+    <div class="bg-[#121215] border border-zinc-800 rounded-3xl p-6 md:p-10 shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+
+        <div class="relative flex flex-col justify-center items-center bg-zinc-900 rounded-2xl border silver-border shadow-inner overflow-hidden min-h-[380px]">
+
+            <img
+                src="https://i.postimg.cc/hGdZNy66/IMG-20260915-WA0017.jpg"
+                class="w-full h-auto max-h-[400px] object-contain mx-auto"
+                alt="Sorteo"
+            >
+
+        </div>
+
+
+        <div class="text-center md:text-left">
+
+            <div class="flex justify-center md:justify-start">
+
+                <span class="text-zinc-200 font-bold text-xs tracking-widest uppercase bg-zinc-800 px-3 py-1 rounded-lg inline-block mb-3 border silver-border">
+                    EDICIÓN #2
+                </span>
+
+            </div>
+
+
+            <h2 class="text-3xl md:text-4xl font-black mt-1 mb-3 text-white tracking-wide">
+                $2000 + $500 de bono
+            </h2>
+
+
+            <div class="bg-zinc-900/80 border silver-border p-4 rounded-xl mb-6 shadow-md text-left">
+
+                <p class="font-bold text-sm text-white mb-1 flex items-center">
+
+                    <i class="fas fa-gift mr-2 text-zinc-300"></i>
+
+                    Dinámica y Oportunidad:
+
+                </p>
+
+                <p class="text-xs text-zinc-300 leading-relaxed">
+
+                    Participa en nuestro sorteo oficial basado en los últimos 2 dígitos del TRIS CLÁSICO de la Lotería Nacional.
+
+                </p>
+
+            </div>
+
+
+            <div class="grid grid-cols-2 gap-4 mb-6">
+
+                <div class="bg-[#09090b] p-4 rounded-xl border border-zinc-800 shadow-sm text-center md:text-left">
+
+                    <span class="text-xs text-zinc-400 block font-medium">
+                        Costo por boleto
+                    </span>
+
+                    <span class="text-2xl font-black text-white">
+                        $45 MXN
+                    </span>
+
+                </div>
+
+
+                <div class="bg-[#09090b] p-4 rounded-xl border border-zinc-800 shadow-sm text-center md:text-left">
+
+                    <span class="text-xs text-zinc-400 block font-medium">
+                        Disponibilidad
+                    </span>
+
+                    <span class="text-lg font-bold text-zinc-100">
+                        Del 00 al 99
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                onclick="toggleBoletos()"
+                class="w-full silver-gradient hover:opacity-90 text-zinc-950 font-black py-4 px-6 rounded-xl text-center transition shadow-lg uppercase tracking-wider text-sm flex items-center justify-center"
+            >
+
+                <i class="fas fa-ticket-alt mr-2"></i>
+
+                Elegir Mis Boletos
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- BOLETOS -->
+<!-- ========================================================= -->
+
+<section
+    id="boletos-section"
+    class="py-12 px-4 max-w-4xl mx-auto hidden"
+>
+
+    <div class="bg-[#121215] border border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl relative">
+
+
+        <button
+            type="button"
+            onclick="cerrarBoletosSection()"
+            class="absolute top-4 right-4 text-zinc-400 hover:text-white bg-zinc-800 hover:bg-zinc-700 w-8 h-8 rounded-full flex items-center justify-center text-xs transition shadow z-10"
+            title="Cerrar"
+        >
+
+            <i class="fas fa-times"></i>
+
+        </button>
+
+
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4 pr-10">
+
+            <div>
+
+                <h3 class="text-2xl font-black text-white">
+                    Selecciona tus números
+                </h3>
+
+                <p class="text-xs text-zinc-400 mt-1">
+                    Puedes elegir uno o varios boletos antes de apartar.
+                </p>
+
+            </div>
+
+
+            <div class="flex flex-wrap gap-3 text-xs bg-[#09090b] p-3 rounded-xl border border-zinc-800">
+
+                <div class="flex items-center space-x-1.5">
+
+                    <span class="w-3 h-3 bg-zinc-600 rounded-full inline-block shadow"></span>
+
+                    <span class="text-zinc-300">
+                        Disponible
+                    </span>
+
+                </div>
+
+
+                <div class="flex items-center space-x-1.5">
+
+                    <span class="w-3 h-3 bg-amber-500 rounded-full inline-block shadow"></span>
+
+                    <span class="text-zinc-300">
+                        Apartado
+                    </span>
+
+                </div>
+
+
+                <div class="flex items-center space-x-1.5">
+
+                    <span class="w-3 h-3 bg-blue-600 rounded-full inline-block shadow"></span>
+
+                    <span class="text-zinc-300">
+                        Pagado
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DATOS CLIENTE -->
+
+        <div class="bg-[#09090b] p-4 rounded-2xl border border-zinc-800 mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+            <div>
+
+                <label class="block text-xs text-zinc-300 font-medium mb-1">
+                    Nombre Completo:
+                </label>
+
+                <input
+                    type="text"
+                    id="cliente-nombre"
+                    autocomplete="name"
+                    placeholder="Tu nombre y apellido"
+                    class="w-full bg-[#121215] border border-zinc-700 text-white px-3 py-2.5 rounded-xl text-sm outline-none focus:border-white"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label class="block text-xs text-zinc-300 font-medium mb-1">
+                    Número de Teléfono (WhatsApp):
+                </label>
+
+                <input
+                    type="tel"
+                    id="cliente-telefono"
+                    inputmode="numeric"
+                    autocomplete="tel"
+                    maxlength="10"
+                    placeholder="Ej. 8441234567"
+                    class="w-full bg-[#121215] border border-zinc-700 text-white px-3 py-2.5 rounded-xl text-sm outline-none focus:border-white"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- GRID -->
+
+        <div
+            id="grid-boletos"
+            class="grid grid-cols-5 sm:grid-cols-10 gap-2.5 max-h-96 overflow-y-auto p-3 bg-[#09090b] rounded-2xl border border-zinc-800 shadow-inner"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- BARRA INFERIOR -->
+<!-- ========================================================= -->
+
+<div
+    id="barra-carrito"
+    class="fixed bottom-0 left-0 right-0 bg-[#121215]/95 border-t border-zinc-800 p-4 z-40 hidden backdrop-blur-md shadow-2xl"
+>
+
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+
+        <div class="text-center sm:text-left">
+
+            <p class="text-xs text-zinc-400">
+
+                Boletos seleccionados:
+
+                <strong
+                    id="txt-cantidad"
+                    class="text-zinc-200 text-sm"
+                >
+                    0
+                </strong>
+
+            </p>
+
+
+            <p class="text-sm font-bold text-white">
+
+                Total a pagar:
+
+                <strong
+                    id="txt-total"
+                    class="text-white text-lg"
+                >
+                    $0 MXN
+                </strong>
+
+            </p>
+
+
+            <p
+                id="txt-bono-status"
+                class="text-[11px] font-semibold mt-0.5 text-zinc-400"
+            ></p>
+
+        </div>
+
+
+        <div class="flex gap-3 w-full sm:w-auto">
+
+            <button
+                type="button"
+                onclick="limpiarSeleccion()"
+                class="bg-[#09090b] hover:bg-zinc-800 text-zinc-300 font-semibold px-4 py-3 rounded-xl text-xs transition border border-zinc-800"
+            >
+                Limpiar
+            </button>
+
+
+            <!--
+                IMPORTANTE:
+                Ya NO es un <a href="wa.me">.
+
+                Primero confirma el apartado en Firebase.
+                Después mostramos un botón real para abrir WhatsApp.
+            -->
+
+            <button
+                type="button"
+                id="btn-whatsapp-mult"
+                onclick="guardarSeleccionComoApartados()"
+                class="flex-1 sm:flex-none silver-gradient hover:opacity-90 text-zinc-950 font-black px-6 py-3 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition flex items-center justify-center space-x-2 shadow-lg"
+            >
+
+                <i class="fas fa-ticket-alt text-base"></i>
+
+                <span id="btn-whatsapp-text">
+                    Apartar boletos
+                </span>
+
+            </button>
+
+        </div>
+
+    </div>
+
 </div>
 
-    <!-- SECCIÓN: VERIFICADOR DE BOLETOS (Título más grande) -->
-    <section id="verificador-section" class="py-12 px-4 max-w-4xl mx-auto">
-        <div class="bg-[#121215] border border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl">
-            <div class="text-center max-w-2xl mx-auto mb-6 p-4 bg-zinc-900/60 border border-zinc-800/80 rounded-2xl shadow-inner">
-                <span class="text-zinc-200 font-extrabold text-sm tracking-widest uppercase bg-zinc-800 px-4 py-1.5 rounded-xl border silver-border inline-block mb-3">VERIFICADOR DE BOLETOS</span>
-                
-                <p class="text-xs text-zinc-400 mt-1">Ingresa tu <strong>número de boleto (2 dígitos, ej. 02)</strong> o tu <strong>teléfono de WhatsApp (10 dígitos)</strong> para consultar tu comprobante.</p>
-            </div>
 
-            <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6">
-                <input type="text" id="busqueda-input" maxlength="10" placeholder="2 dígitos (ej. 02) o 10 dígitos (teléfono)" class="bg-[#09090b] border border-zinc-700 text-white px-4 py-3 rounded-xl text-sm flex-1 outline-none focus:border-white">
-                <button onclick="buscarBoleto()" class="silver-gradient hover:opacity-90 text-zinc-950 font-black px-6 py-3 rounded-xl text-sm transition shadow-md flex items-center justify-center">
-                    <i class="fas fa-search mr-2"></i> Buscar
-                </button>
-            </div>
+<!-- ========================================================= -->
+<!-- MODAL: APARTADO CONFIRMADO -->
+<!-- ========================================================= -->
 
-            <!-- Mantiene 'hidden' para que no aparezca por defecto -->
-            <div id="resultado-comprobante" class="hidden max-w-lg mx-auto bg-[#09090b] border silver-border rounded-2xl p-6 relative overflow-hidden shadow-2xl">
-                <!-- Encabezado con Etiqueta y Botón Cerrar alineados -->
-                <div class="flex justify-between items-center mb-4">
-                    <span class="silver-gradient text-zinc-950 text-[10px] font-black px-3 py-1 rounded-lg uppercase tracking-wider">
-                        Oficial Dinoscents
-                    </span>
-                    <button onclick="cerrarComprobante()" class="text-zinc-400 hover:text-white bg-zinc-800 hover:bg-zinc-700 w-7 h-7 rounded-full flex items-center justify-center text-xs transition shadow">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
+<div
+    id="modal-whatsapp"
+    class="hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+>
 
+    <div class="bg-[#121215] border border-zinc-700 rounded-3xl shadow-2xl max-w-md w-full p-6 text-center">
 
-                <div class="flex items-center space-x-3 mb-4">
-                    <img src="https://i.postimg.cc/D0dtHjJy/IMG-20260915-WA0016.jpg" alt="Logo Dinoscents" class="w-10 h-10 rounded-lg object-cover bg-white shadow">
-                    <div>
-                        <h4 class="font-black text-white text-base">DINOSCENTS SALTILLO</h4>
-                        <p class="text-[10px] text-zinc-400 uppercase tracking-widest">Comprobante Digital de Participación</p>
-                    </div>
-                </div>
+        <div class="w-16 h-16 mx-auto rounded-full bg-amber-500 flex items-center justify-center mb-4">
 
-                <div class="border-t border-b border-zinc-800 py-3 my-3 space-y-2 text-xs">
-                    <div class="flex justify-between"><span class="text-zinc-400">Titular:</span><strong id="comp-nombre" class="text-white font-bold">---</strong></div>
-                    <div class="flex justify-between"><span class="text-zinc-400">Teléfono:</span><strong id="comp-telefono" class="text-white font-bold">---</strong></div>
-                    <div class="flex justify-between"><span class="text-zinc-400">Sorteo:</span><strong class="text-zinc-200 font-bold">$2000 + $500 de bono</strong></div>
-                    <div class="flex justify-between"><span class="text-zinc-400">Boletos Asignados:</span><strong id="comp-numeros" class="text-white font-black text-sm">---</strong></div>
-                    <div class="flex justify-between"><span class="text-zinc-400">Monto Inscrito:</span><strong id="comp-monto" class="text-white font-bold">---</strong></div>
-                    <div class="flex justify-between"><span class="text-zinc-400">Estado del Pago:</span><span id="comp-estado" class="font-black px-2 py-0.5 rounded text-[11px]">---</span></div>
-                </div>
+            <i class="fas fa-check text-2xl text-zinc-950"></i>
 
-                <p class="text-[10px] text-zinc-400 text-center italic">
-                    Sorteo basado en los últimos 2 dígitos del TRIS CLÁSICO de la Lotería Nacional. Conserva este comprobante digital.
-                </p>
-            </div>
         </div>
-    </section>
 
-    <!-- SECCIÓN: ¿QUIÉNES SOMOS? -->
-    <section id="quienes-somos" class="py-12 px-4 max-w-4xl mx-auto">
-        <div class="bg-[#121215] border border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl text-center md:text-left">
-            <div class="flex flex-col md:flex-row items-center gap-6">
-                <img src="https://i.postimg.cc/D0dtHjJy/IMG-20260915-WA0016.jpg" alt="Dinoscents Logo" class="w-20 h-20 rounded-2xl object-cover bg-white shadow-xl border silver-border">
-                <div>
-                    <span class="text-zinc-200 font-bold text-xs tracking-widest uppercase bg-zinc-800 px-3 py-1 rounded-lg border silver-border inline-block mb-2">Emprendimiento Independiente</span>
-                    <h3 class="text-2xl font-black text-white">¿Quiénes somos?</h3>
-                    <p class="text-xs text-zinc-300 mt-2 leading-relaxed">
-                        <strong>Dinoscents</strong> nace como un emprendimiento independiente 100% saltillense enfocado en la realización de sorteos confiables y dinámicas transparentes. Nuestro objetivo principal es ofrecerte premios atractivos en efectivo y otras sorpresas más. Cada rifa se lleva a cabo con total seriedad, legalidad y una atención directa y personalizada para garantizarte una experiencia completamente segura.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- FOOTER Y SOCIALES -->
-    <div class="py-6 max-w-6xl mx-auto px-4">
-        <div class="bg-[#121215] border border-zinc-800 p-6 rounded-3xl shadow-md text-center">
-            <p class="text-sm text-zinc-300 leading-relaxed mb-6">
-                📅 <strong>La fecha anunciada para el sorteo esta sujeta al <strong>80% de boletos vendidos</strong>.
+        <h3 class="text-2xl font-black text-white mb-2">
+            ¡Boletos apartados!
+        </h3>
+
+
+        <p class="text-sm text-zinc-400 mb-5">
+
+            Tus boletos fueron registrados correctamente. Ahora envía el mensaje por WhatsApp para continuar con tu apartado.
+
+        </p>
+
+
+        <div
+            id="resumen-apartado"
+            class="bg-[#09090b] border border-zinc-800 rounded-2xl p-4 text-left mb-5"
+        ></div>
+
+
+        <!--
+            ESTE CLIC SÍ ES UNA ACCIÓN DIRECTA DEL USUARIO.
+            Android tiene una probabilidad mucho mayor de abrir
+            la aplicación de WhatsApp directamente.
+        -->
+
+        <a
+            id="btn-abrir-whatsapp"
+            href="#"
+            class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-black py-4 px-6 rounded-xl flex items-center justify-center gap-2 transition shadow-lg"
+        >
+
+            <i class="fab fa-whatsapp text-xl"></i>
+
+            Abrir WhatsApp
+
+        </a>
+
+
+        <button
+            type="button"
+            onclick="cerrarModalWhatsApp()"
+            class="w-full mt-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold py-3 rounded-xl transition"
+        >
+
+            Cerrar
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================================= -->
+<!-- CANAL DE DIFUSIÓN -->
+<!-- ========================================================= -->
+
+<div style="text-align:center; margin:20px 0;">
+
+    <a
+        href="https://whatsapp.com/channel/0029VbDnYuc6GcGNAqHrqX1x"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+            background-color:#25D366;
+            color:white;
+            padding:12px 24px;
+            text-decoration:none;
+            font-family:sans-serif;
+            font-weight:bold;
+            border-radius:8px;
+            display:inline-block;
+            box-shadow:0 4px 6px rgba(0,0,0,0.1);
+        "
+    >
+
+        📢 Únete a nuestro Canal de Difusión en WhatsApp
+
+    </a>
+
+</div>
+
+
+<!-- ========================================================= -->
+<!-- VERIFICADOR -->
+<!-- ========================================================= -->
+
+<section
+    id="verificador-section"
+    class="py-12 px-4 max-w-4xl mx-auto"
+>
+
+    <div class="bg-[#121215] border border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl">
+
+
+        <div class="text-center max-w-2xl mx-auto mb-6 p-4 bg-zinc-900/60 border border-zinc-800/80 rounded-2xl shadow-inner">
+
+            <span class="text-zinc-200 font-extrabold text-sm tracking-widest uppercase bg-zinc-800 px-4 py-1.5 rounded-xl border silver-border inline-block mb-3">
+
+                VERIFICADOR DE BOLETOS
+
+            </span>
+
+
+            <p class="text-xs text-zinc-400 mt-1">
+
+                Ingresa tu
+                <strong>número de boleto (2 dígitos, ej. 02)</strong>
+                o tu
+                <strong>teléfono de WhatsApp (10 dígitos)</strong>
+                para consultar tu comprobante.
+
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://www.facebook.com/share/18wbrosP44/?mibextid=wwXIfr" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-3 px-6 rounded-xl text-sm transition border border-zinc-600 shadow">
-                    <i class="fab fa-facebook text-base"></i><span>Facebook</span>
-                </a>
-                <a href="https://www.instagram.com/dinoscents.slw?igsh=MWRvcWNycjhhdTZrcw%3D%3D&utm_source=qr" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-3 px-6 rounded-xl text-sm transition border border-zinc-600 shadow">
-                    <i class="fab fa-instagram text-base"></i><span>Instagram</span>
-                </a>
-            </div>
+
         </div>
+
+
+        <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6">
+
+            <input
+                type="text"
+                id="busqueda-input"
+                maxlength="10"
+                inputmode="numeric"
+                placeholder="02 o teléfono"
+                class="bg-[#09090b] border border-zinc-700 text-white px-4 py-3 rounded-xl text-sm flex-1 outline-none focus:border-white"
+            >
+
+
+            <button
+                type="button"
+                onclick="buscarBoleto()"
+                class="silver-gradient hover:opacity-90 text-zinc-950 font-black px-6 py-3 rounded-xl text-sm transition shadow-md flex items-center justify-center"
+            >
+
+                <i class="fas fa-search mr-2"></i>
+
+                Buscar
+
+            </button>
+
+        </div>
+
+
+        <!-- COMPROBANTE -->
+
+        <div
+            id="resultado-comprobante"
+            class="hidden max-w-lg mx-auto bg-[#09090b] border silver-border rounded-2xl p-6 relative overflow-hidden shadow-2xl"
+        >
+
+            <div class="flex justify-between items-center mb-4">
+
+                <span class="silver-gradient text-zinc-950 text-[10px] font-black px-3 py-1 rounded-lg uppercase tracking-wider">
+
+                    Oficial Dinoscents
+
+                </span>
+
+
+                <button
+                    type="button"
+                    onclick="cerrarComprobante()"
+                    class="text-zinc-400 hover:text-white bg-zinc-800 hover:bg-zinc-700 w-7 h-7 rounded-full flex items-center justify-center text-xs transition shadow"
+                >
+
+                    <i class="fas fa-times"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="flex items-center space-x-3 mb-4">
+
+                <img
+                    src="https://i.postimg.cc/D0dtHjJy/IMG-20260915-WA0016.jpg"
+                    alt="Logo Dinoscents"
+                    class="w-10 h-10 rounded-lg object-cover bg-white shadow"
+                >
+
+                <div>
+
+                    <h4 class="font-black text-white text-base">
+                        DINOSCENTS SALTILLO
+                    </h4>
+
+                    <p class="text-[10px] text-zinc-400 uppercase tracking-widest">
+                        Comprobante Digital de Participación
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="border-t border-b border-zinc-800 py-3 my-3 space-y-2 text-xs">
+
+                <div class="flex justify-between">
+
+                    <span class="text-zinc-400">
+                        Titular:
+                    </span>
+
+                    <strong
+                        id="comp-nombre"
+                        class="text-white font-bold"
+                    >
+                        ---
+                    </strong>
+
+                </div>
+
+
+                <div class="flex justify-between">
+
+                    <span class="text-zinc-400">
+                        Teléfono:
+                    </span>
+
+                    <strong
+                        id="comp-telefono"
+                        class="text-white font-bold"
+                    >
+                        ---
+                    </strong>
+
+                </div>
+
+
+                <div class="flex justify-between">
+
+                    <span class="text-zinc-400">
+                        Sorteo:
+                    </span>
+
+                    <strong class="text-zinc-200 font-bold">
+                        $2000 + $500 de bono
+                    </strong>
+
+                </div>
+
+
+                <div class="flex justify-between">
+
+                    <span class="text-zinc-400">
+                        Boletos Asignados:
+                    </span>
+
+                    <strong
+                        id="comp-numeros"
+                        class="text-white font-black text-sm"
+                    >
+                        ---
+                    </strong>
+
+                </div>
+
+
+                <div class="flex justify-between">
+
+                    <span class="text-zinc-400">
+                        Monto Inscrito:
+                    </span>
+
+                    <strong
+                        id="comp-monto"
+                        class="text-white font-bold"
+                    >
+                        ---
+                    </strong>
+
+                </div>
+
+
+                <div class="flex justify-between">
+
+                    <span class="text-zinc-400">
+                        Estado del Pago:
+                    </span>
+
+                    <span
+                        id="comp-estado"
+                        class="font-black px-2 py-0.5 rounded text-[11px]"
+                    >
+                        ---
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p class="text-[10px] text-zinc-400 text-center italic">
+
+                Sorteo basado en los últimos 2 dígitos del TRIS CLÁSICO de la Lotería Nacional. Conserva este comprobante digital.
+
+            </p>
+
+        </div>
+
     </div>
 
-    <!-- PANEL DE ADMINISTRACIÓN OCULTO -->
-    <button onclick="document.getElementById('admin-container').classList.toggle('hidden')" class="fixed bottom-2 left-2 w-6 h-6 opacity-0 z-50 cursor-default" title="Admin"></button>
-    
-    <div id="admin-container" class="hidden fixed bottom-10 left-10 py-8 bg-[#121215] border border-zinc-800 text-center px-4 z-50 rounded-2xl shadow-2xl max-w-sm w-full">
-        <div class="max-w-md mx-auto bg-[#121215] p-6 rounded-2xl border border-zinc-800 shadow-xl">
-            <h4 class="text-sm font-bold text-zinc-300 uppercase tracking-widest mb-2"><i class="fas fa-lock text-xs mr-1"></i> Panel de Administrador</h4>
-            <div id="admin-login" class="flex gap-2">
-                <input type="password" id="admin-pass" placeholder="Contraseña" class="bg-[#09090b] border border-zinc-700 text-white px-3 py-2 rounded-xl text-sm flex-1 outline-none focus:border-white">
-                <button onclick="verificarAdmin()" class="bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2 rounded-xl text-sm font-bold transition shadow">Entrar</button>
+</section>
+
+
+<!-- ========================================================= -->
+<!-- QUIÉNES SOMOS -->
+<!-- ========================================================= -->
+
+<section
+    id="quienes-somos"
+    class="py-12 px-4 max-w-4xl mx-auto"
+>
+
+    <div class="bg-[#121215] border border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl text-center md:text-left">
+
+        <div class="flex flex-col md:flex-row items-center gap-6">
+
+            <img
+                src="https://i.postimg.cc/D0dtHjJy/IMG-20260915-WA0016.jpg"
+                alt="Dinoscents Logo"
+                class="w-20 h-20 rounded-2xl object-cover bg-white shadow-xl border silver-border"
+            >
+
+
+            <div>
+
+                <span class="text-zinc-200 font-bold text-xs tracking-widest uppercase bg-zinc-800 px-3 py-1 rounded-lg border silver-border inline-block mb-2">
+
+                    Emprendimiento Independiente
+
+                </span>
+
+
+                <h3 class="text-2xl font-black text-white">
+                    ¿Quiénes somos?
+                </h3>
+
+
+                <p class="text-xs text-zinc-300 mt-2 leading-relaxed">
+
+                    <strong>Dinoscents</strong>
+                    nace como un emprendimiento independiente 100% saltillense enfocado en la realización de sorteos confiables y dinámicas transparentes. Nuestro objetivo principal es ofrecerte premios atractivos en efectivo y otras sorpresas más. Cada rifa se lleva a cabo con total seriedad, legalidad y una atención directa y personalizada para garantizarte una experiencia completamente segura.
+
+                </p>
+
             </div>
-            <div id="admin-controls" class="hidden mt-4 text-left space-y-3">
-                <div>
-                    <label class="text-xs text-zinc-300 block mb-1">Marcar como PAGADO (ej. 01, 05):</label>
-                    <div class="flex gap-2">
-                        <input type="text" id="admin-nums-pago" placeholder="Ej. 01, 05" class="bg-[#09090b] border border-zinc-700 text-white px-3 py-2 rounded-xl text-sm flex-1 outline-none">
-                        <button onclick="marcarPagadoAdmin()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-black py-2 px-3 rounded-xl transition shadow">Pagado</button>
-                    </div>
-                </div>
-                <div>
-                    <label class="text-xs text-zinc-300 block mb-1">Liberar específicos (ej. 01, 05):</label>
-                    <div class="flex gap-2">
-                        <input type="text" id="admin-nums-liberar" placeholder="Ej. 01, 05" class="bg-[#09090b] border border-zinc-700 text-white px-3 py-2 rounded-xl text-sm flex-1 outline-none">
-                        <button onclick="liberarBoletoAdmin()" class="bg-zinc-700 hover:bg-zinc-600 text-white text-xs font-black py-2 px-3 rounded-xl transition shadow">Liberar</button>
-                    </div>
-                </div>
-                <!-- BOTÓN: LIBERAR TODOS LOS BOLETOS -->
-                <div class="pt-2 border-t border-zinc-800">
-                    <button onclick="liberarTodosAdmin()" class="w-full bg-red-600/80 hover:bg-red-600 text-white text-xs font-black py-2.5 px-3 rounded-xl transition shadow flex items-center justify-center space-x-1">
-                        <i class="fas fa-trash-alt mr-1"></i> <span>Liberar Todos los Boletos</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
+
+<div class="py-6 max-w-6xl mx-auto px-4">
+
+    <div class="bg-[#121215] border border-zinc-800 p-6 rounded-3xl shadow-md text-center">
+
+        <p class="text-sm text-zinc-300 leading-relaxed mb-6">
+
+            📅
+            <strong>
+                La fecha anunciada para el sorteo está sujeta al 80% de boletos vendidos.
+            </strong>
+
+        </p>
+
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+
+            <a
+                href="https://www.facebook.com/share/18wbrosP44/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center space-x-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-3 px-6 rounded-xl text-sm transition border border-zinc-600 shadow"
+            >
+
+                <i class="fab fa-facebook text-base"></i>
+
+                <span>
+                    Facebook
+                </span>
+
+            </a>
+
+
+            <a
+                href="https://www.instagram.com/dinoscents.slw?igsh=MWRvcWNycjhhdTZrcw%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center space-x-2 bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-3 px-6 rounded-xl text-sm transition border border-zinc-600 shadow"
+            >
+
+                <i class="fab fa-instagram text-base"></i>
+
+                <span>
+                    Instagram
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================================= -->
+<!-- ADMIN -->
+<!-- ========================================================= -->
+
+<button
+    type="button"
+    onclick="document.getElementById('admin-container').classList.toggle('hidden')"
+    class="fixed bottom-2 left-2 w-6 h-6 opacity-0 z-50 cursor-default"
+    title="Admin"
+>
+</button>
+
+
+<div
+    id="admin-container"
+    class="hidden fixed bottom-10 left-10 py-8 bg-[#121215] border border-zinc-800 text-center px-4 z-50 rounded-2xl shadow-2xl max-w-sm w-full"
+>
+
+    <div class="max-w-md mx-auto bg-[#121215] p-6 rounded-2xl border border-zinc-800 shadow-xl">
+
+        <h4 class="text-sm font-bold text-zinc-300 uppercase tracking-widest mb-2">
+
+            <i class="fas fa-lock text-xs mr-1"></i>
+
+            Panel de Administrador
+
+        </h4>
+
+
+        <div id="admin-login" class="flex gap-2">
+
+            <input
+                type="password"
+                id="admin-pass"
+                placeholder="Contraseña"
+                class="bg-[#09090b] border border-zinc-700 text-white px-3 py-2 rounded-xl text-sm flex-1 outline-none focus:border-white"
+            >
+
+
+            <button
+                type="button"
+                onclick="verificarAdmin()"
+                class="bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2 rounded-xl text-sm font-bold transition shadow"
+            >
+
+                Entrar
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="admin-controls"
+            class="hidden mt-4 text-left space-y-3"
+        >
+
+
+            <!-- PAGAR -->
+
+            <div>
+
+                <label class="text-xs text-zinc-300 block mb-1">
+
+                    Marcar como PAGADO (ej. 01, 05):
+
+                </label>
+
+
+                <div class="flex gap-2">
+
+                    <input
+                        type="text"
+                        id="admin-nums-pago"
+                        placeholder="Ej. 01, 05"
+                        class="bg-[#09090b] border border-zinc-700 text-white px-3 py-2 rounded-xl text-sm flex-1 outline-none"
+                    >
+
+
+                    <button
+                        type="button"
+                        onclick="marcarPagadoAdmin()"
+                        class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-black py-2 px-3 rounded-xl transition shadow"
+                    >
+
+                        Pagado
+
                     </button>
+
                 </div>
+
             </div>
+
+
+            <!-- LIBERAR -->
+
+            <div>
+
+                <label class="text-xs text-zinc-300 block mb-1">
+
+                    Liberar específicos (ej. 01, 05):
+
+                </label>
+
+
+                <div class="flex gap-2">
+
+                    <input
+                        type="text"
+                        id="admin-nums-liberar"
+                        placeholder="Ej. 01, 05"
+                        class="bg-[#09090b] border border-zinc-700 text-white px-3 py-2 rounded-xl text-sm flex-1 outline-none"
+                    >
+
+
+                    <button
+                        type="button"
+                        onclick="liberarBoletoAdmin()"
+                        class="bg-zinc-700 hover:bg-zinc-600 text-white text-xs font-black py-2 px-3 rounded-xl transition shadow"
+                    >
+
+                        Liberar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- LIBERAR TODOS -->
+
+            <div class="pt-2 border-t border-zinc-800">
+
+                <button
+                    type="button"
+                    onclick="liberarTodosAdmin()"
+                    class="w-full bg-red-600/80 hover:bg-red-600 text-white text-xs font-black py-2.5 px-3 rounded-xl transition shadow flex items-center justify-center space-x-1"
+                >
+
+                    <i class="fas fa-trash-alt mr-1"></i>
+
+                    <span>
+                        Liberar Todos los Boletos
+                    </span>
+
+                </button>
+
+            </div>
+
         </div>
+
     </div>
 
-    <!-- SCRIPT CONECTADO A FIRESTORE -->
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyDT70gKVX7FBA6PCp_ZWOo-aTkfrrKNIyg",
-            authDomain: "dinoscents-sorteos.firebaseapp.com",
-            projectId: "dinoscents-sorteos",
-            storageBucket: "dinoscents-sorteos.firebasestorage.app",
-            messagingSenderId: "1089677957066",
-            appId: "1:1089677957066:web:748257e5c5cec33eaca133",
-            measurementId: "G-S2BXQR20PW"
-        };
+</div>
 
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
 
-        const PRECIO_BOLETO = 45;
-        let boletosData = [];
-        let seleccionTemporarios = [];
+<!-- ========================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================================= -->
 
-        function toggleBoletos() {
-            const seccion = document.getElementById('boletos-section');
-            seccion.classList.toggle('hidden');
-            if(!seccion.classList.contains('hidden')) {
-                seccion.scrollIntoView({ behavior: 'smooth' });
-                cargarBoletosDesdeFirestore();
+<script>
+
+/* ========================================================= */
+/* FIREBASE */
+/* ========================================================= */
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyDT70gKVX7FBA6PCp_ZWOo-aTkfrrKNIyg",
+
+    authDomain: "dinoscents-sorteos.firebaseapp.com",
+
+    projectId: "dinoscents-sorteos",
+
+    storageBucket: "dinoscents-sorteos.firebasestorage.app",
+
+    messagingSenderId: "1089677957066",
+
+    appId: "1:1089677957066:web:748257e5c5cec33eaca133",
+
+    measurementId: "G-S2BXQR20PW"
+
+};
+
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.firestore();
+
+
+/* ========================================================= */
+/* CONFIGURACIÓN */
+/* ========================================================= */
+
+const PRECIO_BOLETO = 45;
+
+
+/*
+    NÚMERO DE WHATSAPP DE DESTINO
+
+    Se mantiene el número que utilizabas:
+    +52 220 552 1660
+*/
+
+const WHATSAPP_NUMERO = "522205521660";
+
+
+let boletosData = [];
+
+let seleccionTemporarios = [];
+
+let whatsappURLPendiente = "";
+
+
+/* ========================================================= */
+/* FUNCIONES GENERALES */
+/* ========================================================= */
+
+function formatearNumero(numero) {
+
+    return numero < 10
+        ? "0" + numero
+        : String(numero);
+
+}
+
+
+function validarTelefono(telefono) {
+
+    return /^[0-9]{10}$/.test(telefono);
+
+}
+
+
+function normalizarNumeroBoleto(numero) {
+
+    numero = String(numero).trim();
+
+    if (!/^\d{1,2}$/.test(numero)) {
+        return null;
+    }
+
+    numero = numero.padStart(2, "0");
+
+    const numeroInt = parseInt(numero, 10);
+
+    if (numeroInt < 0 || numeroInt > 99) {
+        return null;
+    }
+
+    return numero;
+
+}
+
+
+/* ========================================================= */
+/* BOLETOS */
+/* ========================================================= */
+
+function toggleBoletos() {
+
+    const seccion =
+        document.getElementById("boletos-section");
+
+    seccion.classList.toggle("hidden");
+
+
+    if (!seccion.classList.contains("hidden")) {
+
+        seccion.scrollIntoView({
+            behavior: "smooth"
+        });
+
+        cargarBoletosDesdeFirestore();
+
+    }
+
+}
+
+
+function cerrarBoletosSection() {
+
+    document
+        .getElementById("boletos-section")
+        .classList.add("hidden");
+
+    limpiarSeleccion();
+
+}
+
+
+function cargarBoletosDesdeFirestore() {
+
+    db.collection("boletos")
+        .get()
+
+        .then((querySnapshot) => {
+
+            boletosData = [];
+
+            querySnapshot.forEach((doc) => {
+
+                const data = doc.data();
+
+                boletosData.push(data);
+
+            });
+
+
+            /*
+                Si todavía no existen boletos,
+                se crean del 00 al 99.
+            */
+
+            if (boletosData.length === 0) {
+
+                const batch = db.batch();
+
+                for (let i = 0; i < 100; i++) {
+
+                    const numero =
+                        formatearNumero(i);
+
+                    const ref =
+                        db.collection("boletos").doc(numero);
+
+
+                    const nuevoBoleto = {
+
+                        Numero: numero,
+
+                        Estado: "Libre",
+
+                        Nombre: ""
+
+                    };
+
+
+                    batch.set(
+                        ref,
+                        nuevoBoleto
+                    );
+
+
+                    boletosData.push(
+                        nuevoBoleto
+                    );
+
+                }
+
+
+                return batch.commit();
+
             }
+
+        })
+
+        .then(() => {
+
+            renderizarBoletos();
+
+        })
+
+        .catch((error) => {
+
+            console.error(
+                "Error cargando boletos:",
+                error
+            );
+
+            alert(
+                "No se pudieron cargar los boletos. Revisa tu conexión."
+            );
+
+        });
+
+}
+
+
+function renderizarBoletos() {
+
+    const grid =
+        document.getElementById(
+            "grid-boletos"
+        );
+
+    if (!grid) return;
+
+
+    grid.innerHTML = "";
+
+
+    for (let i = 0; i < 100; i++) {
+
+        const numero =
+            formatearNumero(i);
+
+
+        const boletoInfo =
+            boletosData.find(
+                b =>
+                    b &&
+                    b.Numero === numero
+            )
+            ||
+            {
+                Numero: numero,
+
+                Estado: "Libre",
+
+                Nombre: ""
+            };
+
+
+        const estado =
+            boletoInfo.Estado
+                ? String(
+                    boletoInfo.Estado
+                ).toLowerCase()
+                : "libre";
+
+
+        const boton =
+            document.createElement("button");
+
+
+        boton.type = "button";
+
+        boton.innerText = numero;
+
+
+        boton.className =
+            "py-2.5 rounded-lg text-sm font-black transition transform active:scale-95 shadow-sm";
+
+
+        if (estado === "libre") {
+
+            if (
+                seleccionTemporarios
+                    .includes(numero)
+            ) {
+
+                boton.className +=
+                    " bg-white text-zinc-950 ring-2 ring-zinc-400 shadow-md";
+
+            }
+
+            else {
+
+                boton.className +=
+                    " bg-zinc-600 text-zinc-100 hover:bg-zinc-500 shadow-sm";
+
+            }
+
+
+            boton.onclick = function () {
+
+                seleccionarBoleto(numero);
+
+            };
+
         }
 
-        function cargarBoletosDesdeFirestore() {
-            db.collection("boletos").get()
-                .then((querySnapshot) => {
-                    boletosData = [];
-                    querySnapshot.forEach((doc) => {
-                        boletosData.push(doc.data());
+
+        else if (estado === "apartado") {
+
+            boton.className +=
+                " bg-amber-500 text-zinc-950 opacity-95 cursor-not-allowed shadow-md";
+
+            boton.disabled = true;
+
+        }
+
+
+        else if (estado === "pagado") {
+
+            boton.className +=
+                " bg-blue-600 text-white cursor-not-allowed opacity-95 shadow-md";
+
+            boton.disabled = true;
+
+        }
+
+
+        grid.appendChild(boton);
+
+    }
+
+
+    actualizarBarraCarrito();
+
+}
+
+
+function seleccionarBoleto(numero) {
+
+    const index =
+        seleccionTemporarios.indexOf(
+            numero
+        );
+
+
+    if (index > -1) {
+
+        seleccionTemporarios.splice(
+            index,
+            1
+        );
+
+    }
+
+    else {
+
+        seleccionTemporarios.push(
+            numero
+        );
+
+    }
+
+
+    renderizarBoletos();
+
+}
+
+
+function limpiarSeleccion() {
+
+    seleccionTemporarios = [];
+
+    actualizarBarraCarrito();
+
+    renderizarBoletos();
+
+}
+
+
+/* ========================================================= */
+/* BARRA CARRITO */
+/* ========================================================= */
+
+function actualizarBarraCarrito() {
+
+    const barra =
+        document.getElementById(
+            "barra-carrito"
+        );
+
+    const txtCantidad =
+        document.getElementById(
+            "txt-cantidad"
+        );
+
+    const txtTotal =
+        document.getElementById(
+            "txt-total"
+        );
+
+    const txtBono =
+        document.getElementById(
+            "txt-bono-status"
+        );
+
+
+    const cantidad =
+        seleccionTemporarios.length;
+
+
+    if (cantidad <= 0) {
+
+        barra.classList.add(
+            "hidden"
+        );
+
+        return;
+
+    }
+
+
+    barra.classList.remove(
+        "hidden"
+    );
+
+
+    txtCantidad.innerText =
+        cantidad;
+
+
+    const total =
+        cantidad *
+        PRECIO_BOLETO;
+
+
+    txtTotal.innerText =
+        `$${total} MXN`;
+
+
+    txtBono.className =
+        "text-[11px] font-semibold mt-0.5 text-amber-400";
+
+
+    if (cantidad === 1) {
+
+        txtBono.innerHTML =
+            "✨ Escoge uno más para participar por el bono";
+
+    }
+
+    else {
+
+        txtBono.innerHTML =
+            "🎉 ¡Ya participas por el bono de $500!";
+
+    }
+
+}
+
+
+/* ========================================================= */
+/* CONSTRUIR MENSAJE WHATSAPP */
+/* ========================================================= */
+
+function construirMensajeWhatsApp(
+    nombre,
+    telefono,
+    numeros,
+    total
+) {
+
+    const numerosOrdenados =
+        [...numeros]
+            .sort()
+            .join(", ");
+
+
+    const texto =
+
+`Hola, Dinoscents 👋. Quiero apartar los siguientes boletos para el sorteo:
+
+👤 Nombre: *${nombre}*
+📱 Teléfono: *${telefono}*
+🔢 Números: *${numerosOrdenados}*
+💰 Total a pagar: *$${total} MXN*
+
+⚠️ Tengo 24 horas para realizar mi pago y enviar comprobante.`;
+
+
+    return (
+        "https://wa.me/" +
+        WHATSAPP_NUMERO +
+        "?text=" +
+        encodeURIComponent(texto)
+    );
+
+}
+
+
+/* ========================================================= */
+/* APARTAR BOLETOS */
+/* ========================================================= */
+
+async function guardarSeleccionComoApartados() {
+
+    const boton =
+        document.getElementById(
+            "btn-whatsapp-mult"
+        );
+
+
+    const botonTexto =
+        document.getElementById(
+            "btn-whatsapp-text"
+        );
+
+
+    const nombre =
+        document
+            .getElementById(
+                "cliente-nombre"
+            )
+            .value
+            .trim();
+
+
+    const telefono =
+        document
+            .getElementById(
+                "cliente-telefono"
+            )
+            .value
+            .replace(/\D/g, "");
+
+
+    if (!nombre) {
+
+        alert(
+            "Por favor ingresa tu nombre completo."
+        );
+
+        document
+            .getElementById(
+                "cliente-nombre"
+            )
+            .focus();
+
+        return;
+
+    }
+
+
+    if (!validarTelefono(telefono)) {
+
+        alert(
+            "Ingresa un número de WhatsApp válido de 10 dígitos."
+        );
+
+        document
+            .getElementById(
+                "cliente-telefono"
+            )
+            .focus();
+
+        return;
+
+    }
+
+
+    if (
+        seleccionTemporarios.length === 0
+    ) {
+
+        alert(
+            "No has seleccionado ningún boleto."
+        );
+
+        return;
+
+    }
+
+
+    /*
+        Evita múltiples clics mientras
+        Firebase procesa la transacción.
+    */
+
+    boton.disabled = true;
+
+    boton.classList.add(
+        "opacity-50",
+        "pointer-events-none"
+    );
+
+    botonTexto.innerText =
+        "Procesando...";
+
+
+    const numerosAptar =
+        [...seleccionTemporarios];
+
+
+    const total =
+        numerosAptar.length *
+        PRECIO_BOLETO;
+
+
+    try {
+
+        /*
+            TRANSACCIÓN ATÓMICA
+
+            Primero lee TODOS los boletos.
+            Después verifica que estén libres.
+            Finalmente los marca como Apartado.
+        */
+
+        await db.runTransaction(
+            async (transaction) => {
+
+                const lecturas = [];
+
+
+                /*
+                    IMPORTANTE:
+                    Todas las lecturas de una transacción
+                    se hacen antes de las escrituras.
+                */
+
+                for (
+                    const numero
+                    of numerosAptar
+                ) {
+
+                    const ref =
+                        db
+                            .collection("boletos")
+                            .doc(numero);
+
+
+                    const snap =
+                        await transaction.get(
+                            ref
+                        );
+
+
+                    lecturas.push({
+                        numero,
+                        ref,
+                        snap
                     });
-                    
-                    if (boletosData.length === 0) {
-                        let batch = db.batch();
-                        for (let i = 0; i < 100; i++) {
-                            let numStr = i < 10 ? '0' + i : '' + i;
-                            let docRef = db.collection("boletos").doc(numStr);
-                            let nuevoBoleto = { Numero: numStr, Estado: 'Libre', Nombre: '' };
-                            batch.set(docRef, nuevoBoleto);
-                            boletosData.push(nuevoBoleto);
+
+                }
+
+
+                /*
+                    VERIFICAR DISPONIBILIDAD
+                */
+
+                for (
+                    const item
+                    of lecturas
+                ) {
+
+                    const data =
+                        item.snap.exists
+                            ? item.snap.data()
+                            : null;
+
+
+                    const estado =
+                        data &&
+                        data.Estado
+                            ? String(
+                                data.Estado
+                            ).toLowerCase()
+                            : "libre";
+
+
+                    if (
+                        estado !== "libre"
+                    ) {
+
+                        throw {
+                            tipo: "OCUPADO",
+                            numero:
+                                item.numero
+                        };
+
+                    }
+
+                }
+
+
+                /*
+                    ESCRIBIR LOS APARTADOS
+                */
+
+                for (
+                    const item
+                    of lecturas
+                ) {
+
+                    transaction.set(
+                        item.ref,
+                        {
+
+                            Numero:
+                                item.numero,
+
+                            Estado:
+                                "Apartado",
+
+                            Nombre:
+                                `${nombre} (${telefono})`
+
+                        },
+                        {
+                            merge: true
                         }
-                        batch.commit().then(() => renderizarBoletos());
-                    } else {
-                        renderizarBoletos();
+                    );
+
+                }
+
+            }
+        );
+
+
+        /*
+            SI LLEGAMOS AQUÍ,
+            FIREBASE CONFIRMÓ EL APARTADO.
+        */
+
+
+        whatsappURLPendiente =
+            construirMensajeWhatsApp(
+                nombre,
+                telefono,
+                numerosAptar,
+                total
+            );
+
+
+        /*
+            Preparar el botón de WhatsApp.
+
+            NO usamos window.open().
+            NO usamos window.location.
+            NO usamos target="_blank".
+
+            El usuario tendrá que tocar
+            el botón directamente.
+        */
+
+        const btnWhatsApp =
+            document.getElementById(
+                "btn-abrir-whatsapp"
+            );
+
+
+        btnWhatsApp.href =
+            whatsappURLPendiente;
+
+
+        /*
+            Resumen visual
+        */
+
+        document.getElementById(
+            "resumen-apartado"
+        ).innerHTML = `
+
+            <div class="space-y-2 text-sm">
+
+                <div class="flex justify-between gap-4">
+
+                    <span class="text-zinc-400">
+                        Titular:
+                    </span>
+
+                    <strong class="text-white text-right">
+                        ${escapeHTML(nombre)}
+                    </strong>
+
+                </div>
+
+
+                <div class="flex justify-between gap-4">
+
+                    <span class="text-zinc-400">
+                        WhatsApp:
+                    </span>
+
+                    <strong class="text-white">
+                        ${escapeHTML(telefono)}
+                    </strong>
+
+                </div>
+
+
+                <div class="flex justify-between gap-4">
+
+                    <span class="text-zinc-400">
+                        Boletos:
+                    </span>
+
+                    <strong class="text-white text-right">
+                        ${escapeHTML(
+                            [...numerosAptar]
+                                .sort()
+                                .join(", ")
+                        )}
+                    </strong>
+
+                </div>
+
+
+                <div class="border-t border-zinc-800 pt-2 flex justify-between">
+
+                    <span class="text-zinc-400">
+                        Total:
+                    </span>
+
+                    <strong class="text-white">
+                        $${total} MXN
+                    </strong>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        /*
+            Mostrar modal
+        */
+
+        document
+            .getElementById(
+                "modal-whatsapp"
+            )
+            .classList.remove(
+                "hidden"
+            );
+
+
+        /*
+            Limpiar selección
+        */
+
+        seleccionTemporarios = [];
+
+
+        /*
+            Actualizar Firebase / tabla
+        */
+
+        await cargarBoletosDesdeFirestore();
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Error al apartar:",
+            error
+        );
+
+
+        if (
+            error &&
+            error.tipo === "OCUPADO"
+        ) {
+
+            alert(
+                `⚠️ El boleto #${error.numero} acaba de ser apartado por otra persona. Elige otro boleto.`
+            );
+
+        }
+
+        else {
+
+            alert(
+                "Ocurrió un error al procesar tu apartado. Inténtalo nuevamente."
+            );
+
+        }
+
+
+        await cargarBoletosDesdeFirestore();
+
+    }
+
+
+    finally {
+
+        boton.disabled = false;
+
+        boton.classList.remove(
+            "opacity-50",
+            "pointer-events-none"
+        );
+
+        botonTexto.innerText =
+            "Apartar boletos";
+
+    }
+
+}
+
+
+/* ========================================================= */
+/* ESCAPAR HTML */
+/* ========================================================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent =
+        String(text);
+
+    return div.innerHTML;
+
+}
+
+
+/* ========================================================= */
+/* MODAL WHATSAPP */
+/* ========================================================= */
+
+function cerrarModalWhatsApp() {
+
+    document
+        .getElementById(
+            "modal-whatsapp"
+        )
+        .classList.add(
+            "hidden"
+        );
+
+
+    whatsappURLPendiente = "";
+
+}
+
+
+/* ========================================================= */
+/* VERIFICADOR */
+/* ========================================================= */
+
+async function buscarBoleto() {
+
+    let busqueda =
+        document
+            .getElementById(
+                "busqueda-input"
+            )
+            .value
+            .trim();
+
+
+    const contenedor =
+        document.getElementById(
+            "resultado-comprobante"
+        );
+
+
+    if (!busqueda) {
+
+        alert(
+            "Ingresa un número de boleto o teléfono."
+        );
+
+        return;
+
+    }
+
+
+    /*
+        Si escriben solamente un dígito,
+        por ejemplo 2, convertirlo en 02.
+    */
+
+    if (
+        /^\d$/.test(busqueda)
+    ) {
+
+        busqueda =
+            "0" + busqueda;
+
+    }
+
+
+    /*
+        Solo permitimos 2 dígitos
+        o 10 dígitos.
+    */
+
+    if (
+        !/^\d{2}$/.test(busqueda) &&
+        !/^\d{10}$/.test(busqueda)
+    ) {
+
+        alert(
+            "Ingresa un número de boleto de 2 dígitos o un teléfono de 10 dígitos."
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        const querySnapshot =
+            await db
+                .collection("boletos")
+                .get();
+
+
+        const data = [];
+
+
+        querySnapshot.forEach(
+            (doc) => {
+
+                data.push(
+                    doc.data()
+                );
+
+            }
+        );
+
+
+        let encontrados = [];
+
+
+        /*
+            BUSCAR POR BOLETO
+        */
+
+        if (
+            /^\d{2}$/.test(busqueda)
+        ) {
+
+            const boleto =
+                data.find(
+                    b =>
+                        b.Numero ===
+                            busqueda &&
+                        (
+                            b.Estado ===
+                                "Apartado" ||
+                            b.Estado ===
+                                "Pagado"
+                        )
+                );
+
+
+            if (
+                boleto &&
+                boleto.Nombre
+            ) {
+
+                const dueno =
+                    boleto.Nombre;
+
+
+                encontrados =
+                    data.filter(
+                        b =>
+                            b.Nombre ===
+                                dueno &&
+                            (
+                                b.Estado ===
+                                    "Apartado" ||
+                                b.Estado ===
+                                    "Pagado"
+                            )
+                    );
+
+            }
+
+        }
+
+
+        /*
+            BUSCAR POR TELÉFONO
+        */
+
+        else {
+
+            encontrados =
+                data.filter(
+                    b => {
+
+                        if (
+                            !b.Nombre
+                        ) {
+                            return false;
+                        }
+
+
+                        const match =
+                            b.Nombre.match(
+                                /\((\d{10})\)/
+                            );
+
+
+                        return (
+                            match &&
+                            match[1] ===
+                                busqueda &&
+                            (
+                                b.Estado ===
+                                    "Apartado" ||
+                                b.Estado ===
+                                    "Pagado"
+                            )
+                        );
+
                     }
-                })
-                .catch((error) => {
-                    console.error("Error al cargar boletos: ", error);
-                });
+                );
+
         }
 
-        function renderizarBoletos() {
-            const grid = document.getElementById('grid-boletos');
-            if(!grid) return;
-            grid.innerHTML = '';
-            
-            for (let i = 0; i < 100; i++) {
-                let numFormateado = i < 10 ? '0' + i : '' + i;
-                let boletoInfo = boletosData.find(b => b && b.Numero === numFormateado) || { Numero: numFormateado, Estado: 'Libre', Nombre: '' };
-                let estadoStr = boletoInfo.Estado ? String(boletoInfo.Estado).toLowerCase() : 'libre';
-                
-                let btn = document.createElement('button');
-                btn.innerText = numFormateado;
-                btn.className = "py-2.5 rounded-lg text-sm font-black transition transform active:scale-95 shadow-sm";
 
-                if (estadoStr === 'libre') {
-                    if (seleccionTemporarios.includes(numFormateado)) {
-                        btn.className += " bg-white text-zinc-950 ring-2 ring-zinc-400 shadow-md";
-                    } else {
-                        btn.className += " bg-zinc-600 text-zinc-100 hover:bg-zinc-500 shadow-sm";
+        if (
+            encontrados.length === 0
+        ) {
+
+            alert(
+                "No se encontraron boletos con esos datos."
+            );
+
+            contenedor.classList.add(
+                "hidden"
+            );
+
+            return;
+
+        }
+
+
+        const primer =
+            encontrados[0];
+
+
+        const numerosLista =
+            encontrados
+                .map(
+                    e => e.Numero
+                )
+                .sort()
+                .join(", ");
+
+
+        const total =
+            encontrados.length *
+            PRECIO_BOLETO;
+
+
+        let nombreMostrar =
+            primer.Nombre || "";
+
+
+        let telefonoMostrar =
+            "Registrado";
+
+
+        /*
+            Extraer teléfono guardado
+        */
+
+        const matchTelefono =
+            nombreMostrar.match(
+                /\((\d{10})\)/
+            );
+
+
+        if (matchTelefono) {
+
+            telefonoMostrar =
+                matchTelefono[1];
+
+
+            nombreMostrar =
+                nombreMostrar
+                    .replace(
+                        /\s*\(\d{10}\)\s*$/,
+                        ""
+                    )
+                    .trim();
+
+        }
+
+
+        document.getElementById(
+            "comp-nombre"
+        ).innerText =
+            nombreMostrar || "---";
+
+
+        document.getElementById(
+            "comp-telefono"
+        ).innerText =
+            telefonoMostrar;
+
+
+        document.getElementById(
+            "comp-numeros"
+        ).innerText =
+            numerosLista;
+
+
+        document.getElementById(
+            "comp-monto"
+        ).innerText =
+            `$${total} MXN`;
+
+
+        const estado =
+            document.getElementById(
+                "comp-estado"
+            );
+
+
+        const todosPagados =
+            encontrados.every(
+                b =>
+                    String(
+                        b.Estado
+                    ).toLowerCase() ===
+                    "pagado"
+            );
+
+
+        if (todosPagados) {
+
+            estado.innerText =
+                "PAGADO ✓";
+
+
+            estado.className =
+                "bg-blue-600 text-white font-black px-2 py-0.5 rounded text-[11px]";
+
+        }
+
+        else {
+
+            estado.innerText =
+                "APARTADO";
+
+
+            estado.className =
+                "bg-amber-500 text-zinc-950 font-black px-2 py-0.5 rounded text-[11px]";
+
+        }
+
+
+        contenedor.classList.remove(
+            "hidden"
+        );
+
+
+        contenedor.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Error buscando boleto:",
+            error
+        );
+
+        alert(
+            "No se pudo realizar la consulta. Inténtalo nuevamente."
+        );
+
+    }
+
+}
+
+
+/* ========================================================= */
+/* ADMIN */
+/* ========================================================= */
+
+/*
+    ADVERTENCIA:
+    Esta contraseña sigue visible en el JavaScript.
+
+    Esto NO es un sistema de seguridad real.
+    La solución definitiva requiere Firebase Authentication
+    + reglas de Firestore.
+
+    La dejo aquí únicamente para mantener
+    tu funcionamiento actual.
+*/
+
+const ADMIN_PASSWORD =
+    "dino123";
+
+
+function verificarAdmin() {
+
+    const password =
+        document.getElementById(
+            "admin-pass"
+        ).value;
+
+
+    if (
+        password ===
+        ADMIN_PASSWORD
+    ) {
+
+        document
+            .getElementById(
+                "admin-login"
+            )
+            .classList.add(
+                "hidden"
+            );
+
+
+        document
+            .getElementById(
+                "admin-controls"
+            )
+            .classList.remove(
+                "hidden"
+            );
+
+    }
+
+    else {
+
+        alert(
+            "Contraseña incorrecta."
+        );
+
+    }
+
+}
+
+
+/* ========================================================= */
+/* OBTENER NÚMEROS ADMIN */
+/* ========================================================= */
+
+function obtenerNumerosAdmin(
+    inputId
+) {
+
+    const valor =
+        document
+            .getElementById(
+                inputId
+            )
+            .value
+            .trim();
+
+
+    if (!valor) {
+        return [];
+    }
+
+
+    const numeros =
+        valor
+            .split(",")
+            .map(
+                n =>
+                    normalizarNumeroBoleto(
+                        n
+                    )
+            )
+            .filter(
+                n => n !== null
+            );
+
+
+    return [
+        ...new Set(numeros)
+    ];
+
+}
+
+
+/* ========================================================= */
+/* MARCAR PAGADO */
+/* ========================================================= */
+
+async function marcarPagadoAdmin() {
+
+    const numeros =
+        obtenerNumerosAdmin(
+            "admin-nums-pago"
+        );
+
+
+    if (
+        numeros.length === 0
+    ) {
+
+        alert(
+            "Ingresa al menos un número válido."
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        const batch =
+            db.batch();
+
+
+        numeros.forEach(
+            numero => {
+
+                const ref =
+                    db
+                        .collection(
+                            "boletos"
+                        )
+                        .doc(numero);
+
+
+                batch.set(
+                    ref,
+                    {
+                        Estado:
+                            "Pagado"
+                    },
+                    {
+                        merge: true
                     }
-                    btn.onclick = () => seleccionarBoleto(numFormateado);
-                } else if (estadoStr === 'apartado') {
-                    btn.className += " bg-amber-500 text-zinc-950 opacity-95 cursor-not-allowed shadow-md";
-                } else if (estadoStr === 'pagado') {
-                    btn.className += " bg-blue-600 text-white cursor-not-allowed opacity-95 shadow-md";
-                }
-                grid.appendChild(btn);
+                );
+
             }
-            actualizarBarraCarrito();
-        }
+        );
 
-        function seleccionarBoleto(num) {
-            let index = seleccionTemporarios.indexOf(num);
-            if (index > -1) {
-                seleccionTemporarios.splice(index, 1);
-            } else {
-                seleccionTemporarios.push(num);
-            }
-            renderizarBoletos();
-        }
 
-        function limpiarSeleccion() {
-            seleccionTemporarios = [];
-            renderizarBoletos();
-        }
+        await batch.commit();
 
-        function actualizarBarraCarrito() {
-            const barra = document.getElementById('barra-carrito');
-            const txtCantidad = document.getElementById('txt-cantidad');
-            const txtTotal = document.getElementById('txt-total');
-            const txtBonoStatus = document.getElementById('txt-bono-status');
-            const btnWhatsapp = document.getElementById('btn-whatsapp-mult');
-            
-            let cantidad = seleccionTemporarios.length;
-            if (cantidad > 0) {
-                barra.classList.remove('hidden');
-                txtCantidad.innerText = cantidad;
-                let totalPagar = cantidad * PRECIO_BOLETO;
-                txtTotal.innerText = `$${totalPagar} MXN`;
-                
-                txtBonoStatus.className = "text-[11px] font-semibold mt-0.5 text-amber-400";
-                
-                // Mensaje dinámico según cantidad seleccionada
-                if (cantidad === 1) {
-                    txtBonoStatus.innerHTML = '✨ Escoge uno mas para participar por el bono';
-                } else if (cantidad >= 2) {
-                    txtBonoStatus.innerHTML = '🎉 ¡Ya participas por el bono de 500!';
-                } else {
-                    txtBonoStatus.innerHTML = '';
-                }
 
-                let nombre = document.getElementById('cliente-nombre').value.trim();
-                let telefono = document.getElementById('cliente-telefono').value.trim();
-                let numerosOrdenados = [...seleccionTemporarios].sort().join(', ');
-                
-                let mensaje = encodeURIComponent(`Hola, Dinoscents 👋. Quiero apartar los siguientes boletos para el sorteo:\n\n👤 Nombre: *${nombre || 'No especificado'}*\n📱 Teléfono: *${telefono || 'No especificado'}*\n🔢 Números: *${numerosOrdenados}*\n💰 Total a pagar: *$${totalPagar} MXN*\n\n⚠️ (Tengo 24 horas para realizar mi pago y enviar comprobante).`);
-                
-                btnWhatsapp.href = `https://wa.me/522205521660?text=${mensaje}`;
-            } else {
-                barra.classList.add('hidden');
-            }
-        }
+        alert(
+            "Boletos marcados como PAGADOS."
+        );
 
-        document.getElementById('cliente-nombre').addEventListener('input', actualizarBarraCarrito);
-        document.getElementById('cliente-telefono').addEventListener('input', actualizarBarraCarrito);
 
-        // FUNCIÓN MODIFICADA CON TRANSACCIÓN ATÓMICA DE FIREBASE
-        function guardarSeleccionComoApartados(event) {
-            if (event) event.preventDefault();
+        document.getElementById(
+            "admin-nums-pago"
+        ).value = "";
 
-            let nombre = document.getElementById('cliente-nombre').value.trim();
-            let telefono = document.getElementById('cliente-telefono').value.trim();
-            
-            if(!nombre || !telefono) {
-                alert("Por favor ingresa tu nombre completo y teléfono antes de apartar.");
-                return;
-            }
 
-            if (seleccionTemporarios.length === 0) {
-                alert("No has seleccionado ningún boleto.");
-                return;
-            }
+        cargarBoletosDesdeFirestore();
 
-            let numerosAptar = [...seleccionTemporarios];
+    }
 
-            db.runTransaction(async (transaction) => {
-                let lecturas = [];
-                for (let num of numerosAptar) {
-                    let docRef = db.collection("boletos").doc(num);
-                    lecturas.push({ num, docRef, docSnap: await transaction.get(docRef) });
-                }
+    catch (error) {
 
-                for (let item of lecturas) {
-                    let data = item.docSnap.exists ? item.docSnap.data() : null;
-                    let estadoActual = data && data.Estado ? String(data.Estado).toLowerCase() : 'libre';
-                    
-                    if (estadoActual !== 'libre') {
-                        throw { tipo: "OCUPADO", numero: item.num };
+        console.error(
+            "Error marcando pagados:",
+            error
+        );
+
+        alert(
+            "Ocurrió un error."
+        );
+
+    }
+
+}
+
+
+/* ========================================================= */
+/* LIBERAR BOLETOS */
+/* ========================================================= */
+
+async function liberarBoletoAdmin() {
+
+    const numeros =
+        obtenerNumerosAdmin(
+            "admin-nums-liberar"
+        );
+
+
+    if (
+        numeros.length === 0
+    ) {
+
+        alert(
+            "Ingresa al menos un número válido."
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        const batch =
+            db.batch();
+
+
+        numeros.forEach(
+            numero => {
+
+                const ref =
+                    db
+                        .collection(
+                            "boletos"
+                        )
+                        .doc(numero);
+
+
+                batch.set(
+                    ref,
+                    {
+                        Estado:
+                            "Libre",
+
+                        Nombre:
+                            ""
+                    },
+                    {
+                        merge: true
                     }
-                }
+                );
 
-                for (let item of lecturas) {
-                    transaction.set(item.docRef, {
-                        "Numero": item.num,
-                        "Estado": "Apartado",
-                        "Nombre": `${nombre} (${telefono})`
-                    }, { merge: true });
-                }
-
-            }).then(() => {
-                let btnWhatsapp = document.getElementById('btn-whatsapp-mult');
-                if (btnWhatsapp && btnWhatsapp.href) {
-                    window.location.href = btnWhatsapp.href;
-                }
-
-                seleccionTemporarios = [];
-                cargarBoletosDesdeFirestore();
-            }).catch((error) => {
-                if (error && error.tipo === "OCUPADO") {
-                    alert(`⚠️ ¡Vaya! El boleto #${error.numero} acaba de ser apartado por otra persona. Por favor, elige otro.`);
-                } else {
-                    console.error("Error crítico al apartar en transacción:", error);
-                    alert("Ocurrió un error al procesar tu apartado. Inténtalo de nuevo.");
-                }
-                cargarBoletosDesdeFirestore();
-            });
-        }
-
-        function buscarBoleto() {
-            let busqueda = document.getElementById('busqueda-input').value.trim().toLowerCase();
-            let contenedor = document.getElementById('resultado-comprobante');
-            
-            if (!busqueda) {
-                alert("Ingresa un número de boleto o teléfono.");
-                return;
             }
-            if (busqueda.length === 1 && !isNaN(busqueda)) {
-                busqueda = '0' + busqueda;
+        );
+
+
+        await batch.commit();
+
+
+        alert(
+            "Boletos liberados."
+        );
+
+
+        document.getElementById(
+            "admin-nums-liberar"
+        ).value = "";
+
+
+        cargarBoletosDesdeFirestore();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Error liberando boletos:",
+            error
+        );
+
+        alert(
+            "Ocurrió un error."
+        );
+
+    }
+
+}
+
+
+/* ========================================================= */
+/* LIBERAR TODOS */
+/* ========================================================= */
+
+async function liberarTodosAdmin() {
+
+    const confirmar =
+        confirm(
+            "⚠️ ¿Estás seguro de liberar TODOS los boletos del 00 al 99?"
+        );
+
+
+    if (!confirmar) {
+        return;
+    }
+
+
+    try {
+
+        const batch =
+            db.batch();
+
+
+        for (
+            let i = 0;
+            i < 100;
+            i++
+        ) {
+
+            const numero =
+                formatearNumero(i);
+
+
+            const ref =
+                db
+                    .collection(
+                        "boletos"
+                    )
+                    .doc(numero);
+
+
+            batch.set(
+                ref,
+                {
+                    Estado:
+                        "Libre",
+
+                    Nombre:
+                        ""
+                },
+                {
+                    merge: true
+                }
+            );
+
+        }
+
+
+        await batch.commit();
+
+
+        alert(
+            "¡Todos los boletos fueron liberados!"
+        );
+
+
+        cargarBoletosDesdeFirestore();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Error liberando todos:",
+            error
+        );
+
+        alert(
+            "Hubo un error al liberar los boletos."
+        );
+
+    }
+
+}
+
+
+/* ========================================================= */
+/* CERRAR COMPROBANTE */
+/* ========================================================= */
+
+function cerrarComprobante() {
+
+    document
+        .getElementById(
+            "resultado-comprobante"
+        )
+        .classList.add(
+            "hidden"
+        );
+
+
+    document
+        .getElementById(
+            "busqueda-input"
+        )
+        .value = "";
+
+}
+
+
+/* ========================================================= */
+/* VALIDACIÓN DEL TELÉFONO */
+/* ========================================================= */
+
+document
+    .getElementById(
+        "cliente-telefono"
+    )
+    .addEventListener(
+        "input",
+        function () {
+
+            this.value =
+                this.value.replace(
+                    /\D/g,
+                    ""
+                ).slice(
+                    0,
+                    10
+                );
+
+        }
+    );
+
+
+/* ========================================================= */
+/* INICIAR CARRITO AL ESCRIBIR */
+/* ========================================================= */
+
+document
+    .getElementById(
+        "cliente-nombre"
+    )
+    .addEventListener(
+        "input",
+        actualizarBarraCarrito
+    );
+
+
+document
+    .getElementById(
+        "cliente-telefono"
+    )
+    .addEventListener(
+        "input",
+        actualizarBarraCarrito
+    );
+
+
+/* ========================================================= */
+/* TECLA ENTER EN BUSCADOR */
+/* ========================================================= */
+
+document
+    .getElementById(
+        "busqueda-input"
+    )
+    .addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key ===
+                "Enter"
+            ) {
+
+                buscarBoleto();
+
             }
 
-            db.collection("boletos").get().then((querySnapshot) => {
-                let data = [];
-                querySnapshot.forEach((doc) => data.push(doc.data()));
-                
-                let encontrados = [];
-                if (busqueda.length === 2) {
-                    let boletoEncontrado = data.find(b => b.Numero === busqueda && (b.Estado === 'Apartado' || b.Estado === 'Pagado'));
-                    if (boletoEncontrado && boletoEncontrado.Nombre) {
-                        let dueno = boletoEncontrado.Nombre;
-                        encontrados = data.filter(b => b.Nombre === dueno);
-                    }
-                } else {
-                    encontrados = data.filter(b => b.Nombre && b.Nombre.toLowerCase().includes(busqueda) && (b.Estado === 'Apartado' || b.Estado === 'Pagado'));
-                }
-
-                if (encontrados.length === 0) {
-                    alert("No se encontraron boletos con esos datos.");
-                    contenedor.classList.add('hidden');
-                    return;
-                }
-
-                let primer = encontrados[0];
-                let numerosLista = encontrados.map(e => e.Numero).sort().join(', ');
-                let totalInvertido = encontrados.length * PRECIO_BOLETO;
-                
-                document.getElementById('comp-nombre').innerText = primer.Nombre.split('(')[0].trim();
-                document.getElementById('comp-telefono').innerText = primer.Nombre.includes('(') ? primer.Nombre.split('(')[1].replace(')', '').trim() : 'Registrado';
-                document.getElementById('comp-numeros').innerText = numerosLista;
-                document.getElementById('comp-monto').innerText = `$${totalInvertido} MXN`;
-                
-                let elEstado = document.getElementById('comp-estado');
-                if (primer.Estado.toLowerCase() === 'pagado') {
-                    elEstado.innerText = 'PAGADO ✓';
-                    elEstado.className = "bg-blue-600 text-white font-black px-2 py-0.5 rounded text-[11px]";
-                } else {
-                    elEstado.innerText = 'Apartado';
-                    elEstado.className = "bg-amber-500 text-zinc-950 font-black px-2 py-0.5 rounded text-[11px]";
-                }
-
-                contenedor.classList.remove('hidden');
-                contenedor.scrollIntoView({ behavior: 'smooth' });
-            });
         }
+    );
 
-        function verificarAdmin() {
-            if (document.getElementById('admin-pass').value === "dino123") {
-                document.getElementById('admin-login').classList.add('hidden');
-                document.getElementById('admin-controls').classList.remove('hidden');
-            } else {
-                alert("Contraseña incorrecta");
-            }
-        }
 
-        function marcarPagadoAdmin() {
-            let inputVal = document.getElementById('admin-nums-pago').value.trim();
-            if (!inputVal) return;
-            let numeros = inputVal.split(',').map(n => n.trim());
-            let batch = db.batch();
-            
-            numeros.forEach(numStr => {
-                let docRef = db.collection("boletos").doc(numStr);
-                batch.set(docRef, { Estado: "Pagado" }, { merge: true });
-            });
-            batch.commit().then(() => {
-                alert("Boletos marcados como PAGADO(S)");
-                document.getElementById('admin-nums-pago').value = '';
-                cargarBoletosDesdeFirestore();
-            });
-        }
+</script>
 
-        function liberarBoletoAdmin() {
-            let inputVal = document.getElementById('admin-nums-liberar').value.trim();
-            if (!inputVal) return;
-            let numeros = inputVal.split(',').map(n => n.trim());
-            let batch = db.batch();
-            
-            numeros.forEach(numStr => {
-                let docRef = db.collection("boletos").doc(numStr);
-                batch.set(docRef, { Estado: "Libre", Nombre: "" }, { merge: true });
-            });
-            batch.commit().then(() => {
-                alert("Boletos liberados");
-                document.getElementById('admin-nums-liberar').value = '';
-                cargarBoletosDesdeFirestore();
-            });
-        }
-
-        function liberarTodosAdmin() {
-            if (!confirm("⚠️ ¿Estás seguro de liberar TODOS los boletos del 00 al 99? Esta acción reiniciará el sorteo.")) return;
-            
-            let batch = db.batch();
-            for (let i = 0; i < 100; i++) {
-                let numStr = i < 10 ? '0' + i : '' + i;
-                let docRef = db.collection("boletos").doc(numStr);
-                batch.set(docRef, { Estado: "Libre", Nombre: "" }, { merge: true });
-            }
-            
-            batch.commit().then(() => {
-                alert("¡Todos los boletos han sido liberados exitosamente!");
-                cargarBoletosDesdeFirestore();
-            }).catch(err => {
-                console.error("Error al liberar todos: ", err);
-                alert("Hubo un error al intentar liberar los boletos.");
-            });
-        }
-        function cerrarComprobante() {
-            document.getElementById('resultado-comprobante').classList.add('hidden');
-            document.getElementById('busqueda-input').value = '';
-        }
-        function cerrarBoletosSection() {
-            document.getElementById('boletos-section').classList.add('hidden');
-            limpiarSeleccion(); 
-        }
-
-    </script>
 </body>
 </html>
